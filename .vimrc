@@ -2,7 +2,7 @@ call pathogen#infect()
 filetype plugin on
 set backup
 set nocompatible
-set backupdir=~/.vim_backups
+set backupdir=~/.vim/backups
 syntax on
 set hlsearch
 set mousehide
