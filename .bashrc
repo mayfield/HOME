@@ -26,27 +26,13 @@ alias pygrep='grep -n --include=*.py'
 alias cgrep='grep -n --include=*.c'
 alias hgrep='grep -n --include=*.h'
 alias pgrep='grep -n --include=*.h --include=*.c --include=*.S --include=Makefile --include="makefile" --include=*.py --include=*.js'
-alias mountshare='sudo mount -t cifs //cvs.cp.local/Office\ Share -o uid=mayfield,user=mayfield /media/SHARE/'
-alias mountnightlies='sudo mount -t cifs //cvs.cp.local/nightlies -o uid=mayfield,user=mayfield /media/NIGHTLIES/'
-alias mountcp03='sudo mount -t cifs //cp03.cp.local/Company -o uid=mayfield,user=jmayfield /media/CP03'
-alias csget='curl --digest -u admin:admin -X GET'
-alias csput='curl --digest -u admin:admin -X PUT'
-alias cspost='curl --digest -u admin:admin -X POST'
-alias csdelete='curl --digest -u admin:admin -X DELETE'
-alias csget24e='curl --digest -u admin:e002e24e -X GET'
-alias csput24e='curl --digest -u admin:e002e24e -X PUT'
-alias cspost24e='curl --digest -u admin:e002e24e -X POST'
-alias csdelete24e='curl --digest -u admin:e002e24e -X DELETE'
-alias socat_ttyusb0='sudo socat /dev/ttyUSB0 stdio,echo=0,raw,escape=0xf'
-alias socat_ttyusb1='sudo socat /dev/ttyUSB1 stdio,echo=0,raw,escape=0xf'
-alias socat_def='socat_ttyusb0'
 alias gqview='geeqie'
 alias awkfirst='awk "{ print \$1 }"'
 alias dmake='make --debug=v'
 
 
 function pytags() {
-    find $(grealpath -s $@) -follow -type f -name \*.py > .pyfiles && \
+    find $(grealpath 2>/dev/null -s $@ || realpath -s $@) -follow -type f -name \*.py > .pyfiles && \
     pycscope -i .pyfiles -f .cscope_db
     rm -f .pyfiles
 }

@@ -1,1 +1,3 @@
-*
+.vim/undos
+.vim/backups
+*.pyc
