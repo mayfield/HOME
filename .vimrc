@@ -1,9 +1,6 @@
-call pathogen#infect()
-filetype plugin on
+syntax on
 set backup
 set nocompatible
-set backupdir=~/.vim/backups
-syntax on
 set hlsearch
 set mousehide
 set ignorecase
@@ -19,9 +16,11 @@ set tags=tags;/
 set number
 set undofile
 set undodir=~/.vim/undos
+set backupdir=~/.vim/backups
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set nofoldenable
 
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
