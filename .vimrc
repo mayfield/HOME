@@ -1,3 +1,4 @@
+filetype plugin on
 syntax on
 set backup
 set nocompatible
