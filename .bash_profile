@@ -22,5 +22,3 @@ stty erase ^?
 export DISPLAY HISTSIZE HISTFILESIZE USERNAME BASH_ENV \
        PATH MANPATH HOME LD_RUN_PATH LD_LIBRARY_PATH ENV_FILE USERNAME USER \
        PS1 PS2 PS3 PS4 TMP
-
-#PATH=$PATH:/usr/local/Cellar/python3/3.4.2_1/Frameworks/Python.framework/Versions/3.4/bin
