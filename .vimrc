@@ -8,10 +8,8 @@ set ignorecase
 set smartcase
 set incsearch
 set history=5000
-set scrolloff=4
+set scrolloff=8
 set titlelen=200
-set ruler
-set ch=2
 set fo-=cro
 set tags=tags;/
 set number
@@ -28,3 +26,6 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 colorscheme mayfield_silent
+
+set statusline=%#CursorColumn#%<\ [%n]\ %f\ %m%r%=%-35.(line:\ %4l\ of\ %L,\ col:\ %2c\ (%P)%)
+set laststatus=2
