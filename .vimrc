@@ -27,5 +27,7 @@ endif
 
 colorscheme mayfield_silent
 
-set statusline=%#CursorColumn#%<\ [%n]\ %f\ %m%r%=%-35.(line:\ %4l\ of\ %L,\ col:\ %2c\ (%P)%)
+set statusline=%#PmenuSbar#%<\ [%n]\ %t\ %m%r
+set statusline+=%=
+set statusline+=%#Folded#\ line:\ %3l\ of\ %L,\ col:\ %2c\ (%P)\ \ 
 set laststatus=2
