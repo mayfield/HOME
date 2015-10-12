@@ -63,7 +63,7 @@ function git-repo-status() {
 
 
 if [ -n "$(tty)" ] ; then
-	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n:; "
+	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n: \033[2m\$(date +%H:%M.%S)\033[0m ; "
 	PS2=": [.2] ; "
 	PS3=": [.3] ; "
 	PS4=": [.4] ; "
