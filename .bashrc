@@ -1,8 +1,11 @@
 # .bashrc
 
-if [ -f /etc/bashrc ] && [ -r /etc/bashrc ]
-then
-        . /etc/bashrc
+if [ -f /etc/bashrc ] && [ -r /etc/bashrc ] ; then
+    . /etc/bashrc
+fi
+
+if [ -f /usr/local/etc/bash_completion ] ; then
+    . /usr/local/etc/bash_completion
 fi
 
 alias vi=vim
@@ -63,7 +66,7 @@ function git-repo-status() {
 
 
 if [ -n "$(tty)" ] ; then
-	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n: \033[2m\$(date +%H:%M.%S)\033[0m ; "
+	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n: \$(date +%H:%M.%S) ; "
 	PS2=": [.2] ; "
 	PS3=": [.3] ; "
 	PS4=": [.4] ; "
