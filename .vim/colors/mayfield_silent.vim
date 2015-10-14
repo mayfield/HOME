@@ -8,7 +8,6 @@ if exists("syntax_on")
 endif
 
 let g:colors_name = "mayfield_silent"
-"set background=light
 
 if &background == "light"
     hi LineNr           ctermbg=255 ctermfg=240
