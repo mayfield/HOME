@@ -119,7 +119,9 @@ syn keyword pythonStatement	pass raise
 syn keyword pythonStatement	global assert
 syn keyword pythonStatement	lambda yield
 syn keyword pythonStatement	with
-syn keyword pythonStatement	def class nextgroup=pythonFunction skipwhite
+syn keyword pythonClassStatement	class nextgroup=pythonClass skipwhite
+syn match   pythonClass	"[a-zA-Z_][a-zA-Z0-9_]*" display contained
+syn keyword pythonFunctionStatement	def nextgroup=pythonFunction skipwhite
 syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" display contained
 syn keyword pythonRepeat	for while
 syn keyword pythonConditional	if elif else
@@ -302,6 +304,8 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	ImportWarning UnicodeWarning
 endif
 
+syn keyword pythonSelfIdentifier	self
+
 if exists("python_slow_sync") && python_slow_sync != 0
   syn sync minlines=2000
 else
@@ -321,8 +325,11 @@ if version >= 508 || !exists("did_python_syn_inits")
   endif
 
   HiLink pythonStatement	Statement
-  HiLink pythonPreCondit	Statement
+  HiLink pythonFunctionStatement FunctionStatement
   HiLink pythonFunction		Function
+  HiLink pythonClassStatement		ClassStatement
+  HiLink pythonClass		Class
+  HiLink pythonPreCondit	Statement
   HiLink pythonKey		Identifier
   HiLink pythonConditional	Conditional
   HiLink pythonRepeat		Repeat
@@ -376,6 +383,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonExClass	Structure
   HiLink pythonDocstring	Comment
 
+  HiLink pythonSelfIdentifier SelfIdent
   delcommand HiLink
 endif
 

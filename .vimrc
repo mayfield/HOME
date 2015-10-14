@@ -3,7 +3,6 @@ syntax on
 set backup
 set nocompatible
 set hlsearch
-set mousehide
 set ignorecase
 set smartcase
 set incsearch
