@@ -137,9 +137,9 @@ if !exists("python_print_as_function") || python_print_as_function == 0
 endif
 
 " Decorators (new in Python 2.4)
-syn match   pythonDecorator	"@" display nextgroup=pythonDottedName skipwhite
-syn match   pythonDottedName "[a-zA-Z_][a-zA-Z0-9_]*\(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
-syn match   pythonDot        "\." display containedin=pythonDottedName
+syn match   pythonDecorator	"@" display nextgroup=pythonDecoratorName skipwhite
+syn match   pythonDecoratorName "[a-zA-Z_][a-zA-Z0-9_]*\(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
+syn match   pythonDecoratorDot        "\." display containedin=pythonDecoratorName
 
 " Comments
 syn match   pythonComment	"#.*$" display contains=pythonTodo,@Spell
@@ -264,7 +264,7 @@ if exists("python_highlight_builtin_funcs") && python_highlight_builtin_funcs !=
   syn keyword pythonBuiltinFunc	chr classmethod cmp coerce compile complex
   syn keyword pythonBuiltinFunc	delattr dict dir divmod enumerate eval
   syn keyword pythonBuiltinFunc	execfile file filter float format frozenset getattr
-  syn keyword pythonBuiltinFunc	globals hasattr hash help hex id
+  syn keyword pythonBuiltinFunc	globals hasattr hash hex id
   syn keyword pythonBuiltinFunc	input int intern isinstance
   syn keyword pythonBuiltinFunc	issubclass iter len list locals long map max
   syn keyword pythonBuiltinFunc	min next object oct open ord
@@ -305,6 +305,8 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
 endif
 
 syn keyword pythonSelfIdentifier	self
+syn keyword Null	None
+syn keyword Boolean	True False
 
 if exists("python_slow_sync") && python_slow_sync != 0
   syn sync minlines=2000
@@ -337,8 +339,6 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonOperator		Operator
 
   HiLink pythonDecorator	Define
-  HiLink pythonDottedName	Function
-  HiLink pythonDot          Normal
 
   HiLink pythonComment		Comment
   HiLink pythonCoding		Special

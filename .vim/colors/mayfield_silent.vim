@@ -1,5 +1,5 @@
 " Vim color file
-" @Author: Pascal Vasilii <jabberroid@gmail.com>    
+" @Author: Pascal Vasilii <jabberroid@gmail.com>
 " Hacked on my Mr. Mayfield
 
 hi clear
@@ -17,7 +17,7 @@ if &background == "light"
     hi Title            cterm=bold
     hi CursorLine       ctermbg=black
     hi MatchParen       ctermbg=34
-    hi AutoHiGroup      ctermbg=Yellow 
+    hi AutoHiGroup      ctermbg=Yellow
 
     hi Directory        ctermfg=DarkGray cterm=bold
 
@@ -33,11 +33,12 @@ if &background == "light"
     hi PerlPOD          ctermfg=Brown
     hi Constant         ctermfg=DarkGrey cterm=bold
     hi Character        ctermfg=Yellow
-    hi String           ctermfg=black
+    hi String           ctermfg=18
     hi Number           ctermfg=DarkRed
-    hi Boolean          ctermfg=DarkBlue
+    hi Boolean          ctermfg=236 cterm=bold
+    hi Null             ctermfg=124 cterm=bold
     hi Special          ctermfg=DarkRed
-    hi Define           ctermfg=DarkGreen cterm=bold
+    hi Define           ctermfg=red cterm=bold
 
     " vars
     hi Identifier       ctermfg=34
@@ -61,12 +62,13 @@ if &background == "light"
     hi Done             cterm=standout ctermbg=Gray ctermfg=White
 
     hi SpellErrors      ctermfg=DarkRed cterm=underline
-    "hi SpellBad         ctermbg=202 ctermfg=White
+    hi SpellBad      ctermfg=DarkRed cterm=underline
 
     hi Title            cterm=bold
 
     hi pythonSelfIdentifier ctermfg=88
-
+    hi pythonDecoratorName ctermfg=28
+    hi pythonDecoratorDot ctermfg=232
     hi Question         guifg=black gui=bold cterm=bold
 
     hi IndentGuidesOdd ctermbg=250
@@ -95,7 +97,7 @@ else
     hi Number           ctermfg=202
     hi Boolean          ctermfg=DarkBlue
     hi Special          ctermfg=yellow
-    hi Define           ctermfg=DarkGreen cterm=bold
+    hi Define           ctermfg=DarkGreen
 
     " vars
     hi Identifier       ctermfg=36
