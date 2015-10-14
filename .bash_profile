@@ -2,9 +2,7 @@
 
 . "${HOME}/.bashrc"
 
-######### Platform INdependent settings ############
-
-PATH="${PATH}:/usr/local/bin:/sbin:/usr/sbin"
+PATH="$PATH:/usr/local/bin:/sbin:/usr/sbin:$HOME/bin"
 
 BASH_ENV="${HOME}"/.bashrc
 ENV="${BASH_ENV}"
@@ -16,8 +14,6 @@ TMP=$HOME/tmp
 
 stty intr ^C
 stty erase ^?
-
-########### Platform DEpendent settings ###########
 
 export DISPLAY HISTSIZE HISTFILESIZE USERNAME BASH_ENV \
        PATH MANPATH HOME LD_RUN_PATH LD_LIBRARY_PATH ENV_FILE USERNAME USER \
