@@ -60,17 +60,17 @@ if &background == "light"
     hi Todo             cterm=standout ctermbg=Yellow ctermfg=DarkGrey
     hi Done             cterm=standout ctermbg=Gray ctermfg=White
 
-    hi SpellErrors      ctermfg=DarkRed cterm=underline
-    hi SpellBad      ctermfg=DarkRed cterm=underline
+    hi SpellErrors      ctermfg=DarkRed
+    hi SpellBad         ctermfg=DarkRed
 
     hi Title            cterm=bold
 
     hi pythonSelfIdentifier ctermfg=88
     hi pythonDecoratorName ctermfg=28
     hi pythonDecoratorDot ctermfg=232
-    hi Question         guifg=black gui=bold cterm=bold
+    hi Question         cterm=bold
 
-    hi IndentGuidesOdd ctermbg=250
+    hi IndentGuidesOdd  ctermbg=250
     hi IndentGuidesEven ctermbg=255
 else
     hi LineNr           ctermbg=240 ctermfg=252
@@ -117,8 +117,8 @@ else
     hi Todo             cterm=standout ctermbg=Yellow ctermfg=DarkGrey
     hi Done             cterm=standout ctermbg=Gray ctermfg=White
 
-    hi SpellErrors      ctermbg=DarkRed ctermfg=White term=underline
-    hi SpellBad         ctermbg=DarkRed ctermfg=White term=underline
+    hi SpellErrors      ctermbg=DarkRed ctermfg=White
+    hi SpellBad         ctermbg=DarkRed ctermfg=White
 
     hi Title            cterm=bold
 
