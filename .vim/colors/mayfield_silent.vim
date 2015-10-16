@@ -13,7 +13,6 @@ if &background == "light"
     hi LineNr           ctermbg=255 ctermfg=240
     hi StatusLineNC     ctermbg=232  ctermfg=white cterm=bold
     hi StatusLine       ctermfg=black
-    hi Title            cterm=bold
     hi CursorLine       ctermbg=black
     hi MatchParen       ctermbg=34
     hi AutoHiGroup      ctermbg=Yellow
@@ -26,16 +25,16 @@ if &background == "light"
     hi IncSearch        cterm=reverse
     hi Search           ctermbg=red ctermfg=15
 
-    hi Normal           ctermfg=234
+    hi Normal           ctermfg=238
 "    hi Visual           ctermfg=Blue cterm=bold
-    hi Comment          ctermfg=240
+    hi Comment          ctermfg=232
     hi PerlPOD          ctermfg=Brown
     hi Constant         ctermfg=DarkGrey cterm=bold
     hi Character        ctermfg=Yellow
-    hi String           ctermfg=18
-    hi Number           ctermfg=DarkRed
+    hi String           ctermfg=94
+    hi Number           ctermfg=28
     hi Boolean          ctermfg=236 cterm=bold
-    hi Null             ctermfg=124 cterm=bold
+    hi Null             ctermfg=240 cterm=bold
     hi Special          ctermfg=DarkRed
     hi Define           ctermfg=red cterm=bold
 
@@ -63,20 +62,13 @@ if &background == "light"
     hi SpellErrors      ctermfg=DarkRed
     hi SpellBad         ctermfg=DarkRed
 
-    hi Title            cterm=bold
-
     hi pythonSelfIdentifier ctermfg=88
     hi pythonDecoratorName ctermfg=28
     hi pythonDecoratorDot ctermfg=232
     hi Question         cterm=bold
-
-    hi IndentGuidesOdd  ctermbg=250
-    hi IndentGuidesEven ctermbg=255
 else
-    hi LineNr           ctermbg=240 ctermfg=252
-    hi StatusLineNC     ctermbg=240 ctermfg=252
-    hi StatusLine       ctermbg=240 ctermfg=252
-    hi Title            cterm=bold
+    hi LineNr           ctermbg=236 ctermfg=248
+    hi StatusLine       ctermbg=248 ctermfg=236
     hi MatchParen       ctermbg=34
 
     hi Directory        ctermfg=DarkGray cterm=bold
@@ -87,31 +79,32 @@ else
     hi IncSearch        cterm=reverse
     hi Search           ctermbg=red ctermfg=15
 
-    hi Normal           ctermfg=252
-    hi Comment          ctermfg=249
+    hi Normal           ctermfg=250
+    hi Comment          ctermfg=254
     hi PerlPOD          ctermfg=Brown
     hi Constant         ctermfg=LightGrey cterm=bold
     hi Character        ctermfg=Yellow
-    hi String           ctermfg=white
-    hi Number           ctermfg=202
-    hi Boolean          ctermfg=DarkBlue
+    hi String           ctermfg=240
+    hi Number           ctermfg=40
+    hi Boolean          ctermfg=254 cterm=bold
+    hi Null             ctermfg=236 cterm=bold
     hi Special          ctermfg=yellow
-    hi Define           ctermfg=DarkGreen
+    hi Define           ctermfg=red cterm=bold
 
     " vars
     hi Identifier       ctermfg=36
     "hi Exception        ctermfg=196
     hi Statement        ctermfg=33
-    hi ClassStatement   ctermfg=white cterm=bold
-    hi Class            ctermfg=230
-    hi FunctionStatement ctermfg=white cterm=bold
-    hi Function         ctermfg=230
+    hi ClassStatement   ctermfg=red cterm=bold
+    hi Class            ctermfg=38 cterm=bold
+    hi FunctionStatement ctermfg=160
+    hi Function         ctermfg=25
     hi Label            ctermfg=yellow
     hi Keyword          ctermfg=yellow
     hi PreProc          ctermfg=yellow
     hi Type             ctermfg=yellow
-    hi Repeat           ctermfg=33
-    hi Operator         ctermfg=33
+    hi Repeat           ctermfg=202
+    hi Operator         ctermfg=202
     hi Ignore           ctermfg=DarkBlue
     hi Error            ctermbg=88 ctermfg=White
     hi Todo             cterm=standout ctermbg=Yellow ctermfg=DarkGrey
@@ -120,10 +113,5 @@ else
     hi SpellErrors      ctermbg=DarkRed ctermfg=White
     hi SpellBad         ctermbg=DarkRed ctermfg=White
 
-    hi Title            cterm=bold
-
-    hi pythonSelfIdentifier ctermfg=210
-
-    hi IndentGuidesOdd ctermbg=250
-    hi IndentGuidesEven ctermbg=255
+    hi pythonSelfIdentifier ctermfg=124
 endif
