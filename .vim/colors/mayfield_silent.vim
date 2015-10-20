@@ -9,11 +9,12 @@ endif
 
 let g:colors_name = "mayfield_silent"
 
+hi CursorLine       cterm=reverse
+
 if &background == "light"
     hi LineNr           ctermbg=255 ctermfg=240
     hi StatusLineNC     ctermbg=232  ctermfg=white cterm=bold
     hi StatusLine       ctermfg=black
-    hi CursorLine       ctermbg=black
     hi MatchParen       ctermbg=34
     hi AutoHiGroup      ctermbg=Yellow
 
