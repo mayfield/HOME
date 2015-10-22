@@ -302,6 +302,7 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	PendingDepricationWarning SyntaxWarning
   syn keyword pythonExClass	RuntimeWarning FutureWarning
   syn keyword pythonExClass	ImportWarning UnicodeWarning
+  syn keyword pythonExClass	BrokenPipeError ConnectionError
 endif
 
 syn keyword pythonSelfIdentifier	self
