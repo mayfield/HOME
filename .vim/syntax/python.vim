@@ -130,9 +130,6 @@ syn keyword pythonConditional	if elif else
 syn keyword pythonPreCondit	import from as
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
-syn match   pythonKey           +["\'0-9A-Za-z_]*+ contained
-syn region  _key_value_pair     start=+[{,]+ end=+:+ keepend transparent contains=pythonKey contained
-syn region  _python_dict_       start=+{+ end=+}+ keepend transparent contains=_key_value_pair,pythonString
 
 if !exists("python_print_as_function") || python_print_as_function == 0
   syn keyword pythonStatement print
@@ -340,7 +337,6 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonClassStatement		ClassStatement
   HiLink pythonClass		Class
   HiLink pythonPreCondit	Statement
-  HiLink pythonKey		Identifier
   HiLink pythonConditional	Conditional
   HiLink pythonRepeat		Repeat
   HiLink pythonException	Exception

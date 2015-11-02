@@ -28,7 +28,7 @@ if &background == "light"
 
     hi Normal           ctermfg=238
 "    hi Visual           ctermfg=Blue cterm=bold
-    hi Comment          ctermfg=232
+    hi Comment          ctermfg=172
     hi PerlPOD          ctermfg=Brown
     hi Constant         ctermfg=DarkGrey cterm=bold
     hi Character        ctermfg=Yellow
@@ -83,7 +83,7 @@ else
     hi Search           ctermbg=red ctermfg=15
 
     hi Normal           ctermfg=250
-    hi Comment          ctermfg=254
+    hi Comment          ctermfg=256
     hi PerlPOD          ctermfg=Brown
     hi Constant         ctermfg=LightGrey cterm=bold
     hi Character        ctermfg=Yellow
