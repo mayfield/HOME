@@ -1,4 +1,5 @@
 # .bashrc
+SHELL_SESSION_HISTORY=0
 
 if [ -f /etc/bashrc ] && [ -r /etc/bashrc ] ; then
     . /etc/bashrc
@@ -24,6 +25,56 @@ alias pgrep='grep -n --include=*.h --include=*.c --include=*.S --include=Makefil
 alias gqview='geeqie'
 alias awkfirst='awk "{ print \$1 }"'
 alias dmake='make --debug=v'
+alias dockerenv='eval $(docker-machine env local)'
+alias awsdockerenv='eval $(docker-machine env aws)'
+alias dockviz="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
+alias awsconsole="aws --output text ec2 get-console-output --instance-id"
+alias sshecs='ssh -i ~/.ssh/ecs.pem -l ec2-user'
+
+function sshhome() {
+    ssh -p 2222 $(ecmip home_gateway)
+}
+
+function ecmip() {
+    NAME=$1
+    shift
+    ecm routers search "name:$NAME" \
+        --plain \
+        --table-padding 0 \
+        --no-clip \
+        --table-width 0 \
+        --columns 7 \
+        --no-header \
+        $@
+}
+
+function dpsg() {
+    docker ps -a | grep "$@" | awk '{print $1}'
+}
+
+function denv() {
+    if [ -z "$1" ] ; then
+        OPT=default
+    else
+        OPT=
+    fi
+    eval $(docker-machine env $OPT$@)
+}
+
+function dflush() {
+    RUNNING=$(docker ps -q)
+    if [ -n "$RUNNING" ] ; then
+        docker kill $RUNNING
+    fi
+    CONTAINERS=$(docker ps -aq)
+    if [ -n "$CONTAINERS" ] ; then
+        docker rm -f $CONTAINERS
+    fi
+    IMAGES=$(docker images -aq)
+    if [ -n "$IMAGES" ] ; then
+        docker rmi -f $IMAGES
+    fi
+}
 
 
 function pytags() {
@@ -98,3 +149,4 @@ _ecm_completion() {
 }
 complete -o nospace -F _ecm_completion ecm
 ###-end-ecm-$(name)s-###
+
