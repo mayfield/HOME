@@ -12,7 +12,7 @@ let g:colors_name = "mayfield_silent"
 hi CursorLine       cterm=reverse
 
 if &background == "light"
-    hi LineNr           ctermbg=255 ctermfg=240
+    hi LineNr           ctermbg=255 ctermfg=250
     hi StatusLineNC     ctermbg=232  ctermfg=white cterm=bold
     hi StatusLine       ctermfg=black
     hi MatchParen       ctermbg=34
@@ -28,28 +28,30 @@ if &background == "light"
 
     hi Normal           ctermfg=238
 "    hi Visual           ctermfg=Blue cterm=bold
-    hi Comment          ctermfg=232
+    hi Comment          ctermfg=172
     hi PerlPOD          ctermfg=Brown
     hi Constant         ctermfg=DarkGrey cterm=bold
     hi Character        ctermfg=Yellow
-    hi String           ctermfg=94
-    hi Number           ctermfg=28
+    hi String           ctermfg=28
+    hi Number           ctermfg=26
     hi Boolean          ctermfg=236 cterm=bold
     hi Null             ctermfg=240 cterm=bold
     hi Special          ctermfg=DarkRed
     hi Define           ctermfg=red cterm=bold
 
     " vars
-    hi Identifier       ctermfg=34
+    hi Identifier       ctermfg=232
     "hi Exception        ctermfg=196
     hi Statement        ctermfg=26
+    hi FunctionInterrupt ctermfg=160
     "hi Label            ctermfg=46
     hi Keyword          ctermfg=DarkBlue
     hi PreProc          ctermfg=DarkBlue
     hi Type             ctermfg=34
+    hi SubType          ctermfg=59
     hi ClassStatement   ctermfg=red cterm=bold
     hi Class            ctermfg=38 cterm=bold
-    hi FunctionStatement ctermfg=160
+    hi FunctionStatement ctermfg=196
     hi Function         ctermfg=26
     hi Repeat           ctermfg=202
     hi Operator         ctermfg=202
@@ -66,11 +68,12 @@ if &background == "light"
     hi pythonAsyncIdentifier ctermfg=124
     hi pythonAwaitIdentifier ctermfg=208 cterm=bold
     hi pythonSelfIdentifier ctermfg=88
+    hi SelfIdent ctermfg=88
     hi pythonDecoratorName ctermfg=28
     hi pythonDecoratorDot ctermfg=232
     hi Question         cterm=bold
 else
-    hi LineNr           ctermbg=236 ctermfg=248
+    hi LineNr           ctermbg=234 ctermfg=240
     hi StatusLine       ctermbg=248 ctermfg=236
     hi MatchParen       ctermbg=34
 
@@ -83,7 +86,7 @@ else
     hi Search           ctermbg=red ctermfg=15
 
     hi Normal           ctermfg=250
-    hi Comment          ctermfg=254
+    hi Comment          ctermfg=256
     hi PerlPOD          ctermfg=Brown
     hi Constant         ctermfg=LightGrey cterm=bold
     hi Character        ctermfg=Yellow
@@ -91,13 +94,14 @@ else
     hi Number           ctermfg=40
     hi Boolean          ctermfg=254 cterm=bold
     hi Null             ctermfg=236 cterm=bold
-    hi Special          ctermfg=yellow
+    hi Special          ctermfg=186
     hi Define           ctermfg=red cterm=bold
 
     " vars
-    hi Identifier       ctermfg=36
+    hi Identifier       ctermfg=255
     "hi Exception        ctermfg=196
     hi Statement        ctermfg=33
+    hi FunctionInterrupt ctermfg=178
     hi ClassStatement   ctermfg=red cterm=bold
     hi Class            ctermfg=38 cterm=bold
     hi FunctionStatement ctermfg=160
@@ -105,7 +109,8 @@ else
     hi Label            ctermfg=yellow
     hi Keyword          ctermfg=yellow
     hi PreProc          ctermfg=yellow
-    hi Type             ctermfg=yellow
+    hi Type             ctermfg=white cterm=bold
+    hi SubType          ctermfg=59
     hi Repeat           ctermfg=202
     hi Operator         ctermfg=202
     hi Ignore           ctermfg=DarkBlue
@@ -116,5 +121,5 @@ else
     hi SpellErrors      ctermbg=DarkRed ctermfg=White
     hi SpellBad         ctermbg=DarkRed ctermfg=White
 
-    hi pythonSelfIdentifier ctermfg=124
+    hi SelfIdent ctermfg=124
 endif

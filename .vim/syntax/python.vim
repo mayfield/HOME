@@ -120,29 +120,28 @@ syn keyword pythonStatement	global assert
 syn keyword pythonStatement	lambda yield
 syn keyword pythonStatement	with
 syn keyword pythonClassStatement	class nextgroup=pythonClass skipwhite
-syn match   pythonClass	"[a-zA-Z_][a-zA-Z0-9_]*" display contained
+syn match   pythonClass	"[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=pythonSubClassWrap contained
+syn region  pythonSubClassWrap start="(" end=")" contained transparent contains=pythonSubClass
+syn match   pythonSubClass "[a-zA-Z_][a-zA-Z0-9_]*" contained
 syn keyword pythonFunctionStatement	def nextgroup=pythonFunction skipwhite
-syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" display contained
+syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" contained
 syn keyword pythonRepeat	for while
 syn keyword pythonConditional	if elif else
 syn keyword pythonPreCondit	import from as
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
-syn match   pythonKey           +["\'0-9A-Za-z_]*+ contained
-syn region  _key_value_pair     start=+[{,]+ end=+:+ keepend transparent contains=pythonKey contained
-syn region  _python_dict_       start=+{+ end=+}+ keepend transparent contains=_key_value_pair,pythonString
 
 if !exists("python_print_as_function") || python_print_as_function == 0
   syn keyword pythonStatement print
 endif
 
 " Decorators (new in Python 2.4)
-syn match   pythonDecorator	"@" display nextgroup=pythonDecoratorName skipwhite
-syn match   pythonDecoratorName "[a-zA-Z_][a-zA-Z0-9_]*\(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
-syn match   pythonDecoratorDot        "\." display containedin=pythonDecoratorName
+syn match   pythonDecorator	"@" nextgroup=pythonDecoratorName skipwhite
+syn match   pythonDecoratorName "[a-zA-Z_][a-zA-Z0-9_]*\(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" contained
+syn match   pythonDecoratorDot        "\." containedin=pythonDecoratorName
 
 " Comments
-syn match   pythonComment	"#.*$" display contains=pythonTodo,@Spell
+syn match   pythonComment	"#.*$" contains=pythonTodo,@Spell
 syn match   pythonRun		"\%^#!.*$"
 syn match   pythonCoding	"\%^.*\(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$"
 syn keyword pythonTodo		TODO FIXME XXX contained
@@ -302,11 +301,17 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	PendingDepricationWarning SyntaxWarning
   syn keyword pythonExClass	RuntimeWarning FutureWarning
   syn keyword pythonExClass	ImportWarning UnicodeWarning
+  syn keyword pythonExClass	BrokenPipeError ConnectionError
 endif
 
 syn keyword pythonAsyncIdentifier	async
 syn keyword pythonAwaitIdentifier	await
 syn keyword pythonSelfIdentifier	self
+syn keyword pythonRaiseStatement	raise
+syn keyword pythonYieldStatement	yield
+syn keyword pythonAwaitStatement	await
+syn keyword pythonAsyncStatement	async
+syn keyword pythonReturnStatement	return
 syn keyword Null	None
 syn keyword Boolean	True False
 
@@ -334,7 +339,6 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonClassStatement		ClassStatement
   HiLink pythonClass		Class
   HiLink pythonPreCondit	Statement
-  HiLink pythonKey		Identifier
   HiLink pythonConditional	Conditional
   HiLink pythonRepeat		Repeat
   HiLink pythonException	Exception
@@ -382,12 +386,16 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonBuiltinObj	Structure
   HiLink pythonBuiltinFunc	Function
 
-  HiLink pythonExClass	Structure
+  HiLink pythonExClass	    Structure
   HiLink pythonDocstring	Comment
 
   HiLink pythonSelfIdentifier SelfIdent
-  HiLink pythonAsyncIdentifier Define
-  HiLink pythonAwaitIdentifier Special
+  HiLink pythonSubClass     SubType
+
+  HiLink pythonRaiseStatement FunctionInterrupt
+  HiLink pythonYieldStatement FunctionInterrupt
+  HiLink pythonAwaitStatement FunctionInterrupt
+  HiLink pythonReturnStatement FunctionInterrupt
   delcommand HiLink
 endif
 
