@@ -8,3 +8,4 @@ mixin
 shellish
 stateful
 uri
+PagerDuty

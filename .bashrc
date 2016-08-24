@@ -24,6 +24,7 @@ alias pgrep='grep -n --include=*.h --include=*.c --include=*.S --include=Makefil
 alias gqview='geeqie'
 alias awkfirst='awk "{ print \$1 }"'
 alias dmake='make --debug=v'
+alias sshecs='ssh -i ~/.ssh/ecs.pem -l ec2-user'
 
 
 function pytags() {

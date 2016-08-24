@@ -63,6 +63,8 @@ if &background == "light"
     hi SpellErrors      ctermfg=DarkRed
     hi SpellBad         ctermfg=DarkRed
 
+    hi pythonAsyncIdentifier ctermfg=124
+    hi pythonAwaitIdentifier ctermfg=208 cterm=bold
     hi pythonSelfIdentifier ctermfg=88
     hi pythonDecoratorName ctermfg=28
     hi pythonDecoratorDot ctermfg=232

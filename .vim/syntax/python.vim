@@ -304,6 +304,8 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	ImportWarning UnicodeWarning
 endif
 
+syn keyword pythonAsyncIdentifier	async
+syn keyword pythonAwaitIdentifier	await
 syn keyword pythonSelfIdentifier	self
 syn keyword Null	None
 syn keyword Boolean	True False
@@ -384,6 +386,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonDocstring	Comment
 
   HiLink pythonSelfIdentifier SelfIdent
+  HiLink pythonAsyncIdentifier Define
+  HiLink pythonAwaitIdentifier Special
   delcommand HiLink
 endif
 
