@@ -304,6 +304,8 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	BrokenPipeError ConnectionError
 endif
 
+syn keyword pythonAsyncIdentifier	async
+syn keyword pythonAwaitIdentifier	await
 syn keyword pythonSelfIdentifier	self
 syn keyword pythonRaiseStatement	raise
 syn keyword pythonYieldStatement	yield

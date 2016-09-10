@@ -19,6 +19,7 @@ alias mps='ps -eo pid,ppid,user,bsdstart,bsdtime,tty,ni,pcpu,rss,comm --sort c'
 alias grep='grep --color'
 alias awkfirst='awk "{ print \$1 }"'
 alias dmake='make --debug=v'
+alias sshecs='ssh -i ~/.ssh/ecs.pem -l ec2-user'
 alias dockerenv='eval $(docker-machine env local)'
 alias awsdockerenv='eval $(docker-machine env aws)'
 alias dockviz="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
