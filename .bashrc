@@ -16,13 +16,7 @@ alias ls='ls -F'
 alias lr='ls -Frt'
 alias psg='ps -aef | grep -v psg | grep -v grep | grep'
 alias mps='ps -eo pid,ppid,user,bsdstart,bsdtime,tty,ni,pcpu,rss,comm --sort c'
-alias grep='grep --color --exclude=*.svn-base --exclude=tags'
-alias jsgrep='grep -n --include=*.js'
-alias pygrep='grep -n --include=*.py'
-alias cgrep='grep -n --include=*.c'
-alias hgrep='grep -n --include=*.h'
-alias pgrep='grep -n --include=*.h --include=*.c --include=*.S --include=Makefile --include="makefile" --include=*.py --include=*.js'
-alias gqview='geeqie'
+alias grep='grep --color'
 alias awkfirst='awk "{ print \$1 }"'
 alias dmake='make --debug=v'
 alias dockerenv='eval $(docker-machine env local)'
@@ -149,4 +143,3 @@ _ecm_completion() {
 }
 complete -o nospace -F _ecm_completion ecm
 ###-end-ecm-$(name)s-###
-
