@@ -13,7 +13,7 @@ HISTFILESIZE=100000000
 HISTCONTROL=ignoredups:erasedups  
 shopt -s histappend  # append to history file instead of replace
 # Write history file on each command
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a"
 
 TMP=$HOME/tmp
 
