@@ -19,6 +19,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set nofoldenable
+set clipboard=unnamed
+set mousehide
 
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
