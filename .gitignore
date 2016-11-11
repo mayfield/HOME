@@ -1,3 +1,6 @@
 .vim/undos
 .vim/backups
+.vim/bundle
+.vim/autoload
+.vim/spell
 *.pyc

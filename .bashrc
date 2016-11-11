@@ -125,22 +125,4 @@ export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
 export CSCOPE_DB=.cscope_db
 
-###-begin-ecm-completion-###
-#
-# ecm command completion script
-#
-# Installation: ecm completion >> ~/.bashrc
-#
-_ecm_completion() {
-    local words cword
-    cword="$COMP_CWORD"
-    words=("${COMP_WORDS[@]}")
-    local si="$IFS"
-    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
-                         COMP_LINE="$COMP_LINE" \
-                         ecm completion --seed "${words[@]}" \
-                         2>/dev/null)) || return $?
-    IFS="$si"
-}
-complete -o nospace -F _ecm_completion ecm
-###-end-ecm-$(name)s-###
+PATH=$PATH:~/project/odyssey/tools/bin
