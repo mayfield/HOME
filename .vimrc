@@ -35,4 +35,4 @@ set statusline+=\ line:\ %3l\ of\ %L,\ col:\ %2c\ (%P)\ \
 set laststatus=2
 
 "vim-gitgutter
-set updatetime=250
+set updatetime=25

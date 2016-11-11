@@ -11,6 +11,18 @@ let g:colors_name = "mayfield_silent"
 
 hi CursorLine       cterm=reverse
 
+" gitgutter
+hi clear SignColumn
+hi link SignColumn LineNr
+hi link DiffAdd LineNr
+hi link DiffChange LineNr
+hi link DiffDelete LineNr
+hi link GitGutterAddDefault LineNr
+hi link GitGutterChangeDefault LineNr
+hi link GitGutterChangeDefault LineNr
+hi link GitGutterDeleteDefault LineNr
+
+
 if &background == "light"
     hi LineNr           ctermbg=255 ctermfg=250
     hi StatusLineNC     ctermbg=232  ctermfg=white cterm=bold
