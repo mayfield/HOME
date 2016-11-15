@@ -304,8 +304,6 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	BrokenPipeError ConnectionError
 endif
 
-syn keyword pythonAsyncIdentifier	async
-syn keyword pythonAwaitIdentifier	await
 syn keyword pythonSelfIdentifier	self
 syn keyword pythonRaiseStatement	raise
 syn keyword pythonYieldStatement	yield
@@ -396,6 +394,9 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonYieldStatement FunctionInterrupt
   HiLink pythonAwaitStatement FunctionInterrupt
   HiLink pythonReturnStatement FunctionInterrupt
+
+  HiLink pythonAsyncStatement AsyncStatement
+  HiLink pythonAwaitStatement AwaitStatement
   delcommand HiLink
 endif
 

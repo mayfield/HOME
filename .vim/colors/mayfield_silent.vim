@@ -77,9 +77,8 @@ if &background == "light"
     hi SpellErrors      ctermfg=DarkRed
     hi SpellBad         ctermfg=DarkRed
 
-    hi pythonAsyncStatement ctermfg=202 cterm=bold
-    hi pythonAwaitStatement ctermfg=208 cterm=bold
-    hi pythonSelfIdentifier ctermfg=88
+    hi AsyncStatement ctermfg=202 cterm=bold
+    hi AwaitStatement ctermfg=208 cterm=bold
     hi SelfIdent ctermfg=88
     hi pythonDecoratorName ctermfg=28
     hi pythonDecoratorDot ctermfg=232
@@ -133,5 +132,7 @@ else
     hi SpellErrors      ctermbg=DarkRed ctermfg=White
     hi SpellBad         ctermbg=DarkRed ctermfg=White
 
+    hi AsyncStatement ctermfg=202 cterm=bold
+    hi AwaitStatement ctermfg=208 cterm=bold
     hi SelfIdent ctermfg=124
 endif
