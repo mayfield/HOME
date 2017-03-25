@@ -118,6 +118,7 @@ if [ -n "$(tty)" ] ; then
 	PS4=": [.4] ; "
 fi
 
+export LESS="-i -X -R -F"
 export EDITOR=vim
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
 
@@ -126,3 +127,8 @@ PATH=$PATH:$GOPATH/bin
 export CSCOPE_DB=.cscope_db
 
 PATH=$PATH:~/project/odyssey/tools/bin
+export ODYSSEY_DEFAULT_STACK=mayfield
+
+export ANDROID_HOME=${HOME}/Android/Sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
