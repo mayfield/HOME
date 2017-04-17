@@ -20,10 +20,8 @@ TMP=$HOME/tmp
 stty intr ^C
 stty erase ^?
 
-export ANDROID_HOME=${HOME}/Library/Android/sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-
 export DISPLAY HISTSIZE HISTFILESIZE HISTCONTROL USERNAME BASH_ENV \
        PATH MANPATH HOME LD_RUN_PATH LD_LIBRARY_PATH ENV_FILE USERNAME USER \
        PS1 PS2 PS3 PS4 TMP
+
+[ -r ~/.bash_profile_local ] && . ~/.bash_profile_local

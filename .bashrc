@@ -79,9 +79,9 @@ function git-repo-status() {
         return
     fi
     if (echo $URL | grep -qE '\w+:\/\/') ; then
-        ORIGIN=$(echo $URL | sed -re 's/\w+:\/\/[^\/]+\/(.*?)(\.git|$)/\1/')
+        ORIGIN=$(echo $URL | sed -E 's/\w+:\/\/[^\/]+\/(.*?)(\.git|$)/\1/')
     else
-        ORIGIN=$(echo $URL | sed -re 's/\w+@[^:]+:(.*?)(\.git|$)/\1/')
+        ORIGIN=$(echo $URL | sed -E 's/\w+@[^:]+:(.*?)(\.git|$)/\1/')
     fi
     NORM="\033[0m"
     BOLD="\033[1m"
@@ -141,6 +141,5 @@ export CSCOPE_DB=.cscope_db
 PATH=$PATH:~/project/odyssey/tools/bin
 
 export ODYSSEY_DEFAULT_STACK=mayfield
-export ANDROID_HOME=${HOME}/Android/Sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+[ -r ~/.bashrc_local ] && . ~/.bashrc_local
