@@ -73,35 +73,49 @@ function pytags() {
 }
 
 function git-repo-status() {
-    ORIGIN=$(basename $(git config remote.origin.url 2>/dev/null) 2>/dev/null)
+    #ORIGIN=$(basename $(git config remote.origin.url 2>/dev/null) 2>/dev/null)
+    URL=$(git config remote.origin.url 2>/dev/null)
+    if [ -z "$URL" ] ; then
+        return
+    fi
+    if (echo $URL | grep -qE '\w+:\/\/') ; then
+        ORIGIN=$(echo $URL | sed -re 's/\w+:\/\/[^\/]+\/(.*?)(\.git|$)/\1/')
+    else
+        ORIGIN=$(echo $URL | sed -re 's/\w+@[^:]+:(.*?)(\.git|$)/\1/')
+    fi
     NORM="\033[0m"
+    BOLD="\033[1m"
     RED="\033[31m"
     GREEN="\033[32m"
+    CYAN="\033[36m"
     BLUE="\033[34m"
-    if [ -n "$ORIGIN" ] ; then
-        STATUS=$(git status -b -uno --porcelain 2>/dev/null)
-        AHEAD=$(echo $STATUS | grep '\[ahead ' |
-                sed -e 's/.* \[ahead \([0-9][0-9]*\)\].*/\1/')
-        BRANCH=$(echo $STATUS | sed -e 's/## \([^\.][^\.]*\).*/\1/')
-        DIFFSTAT=$(git diff --shortstat)
-        STATUS=
-        if [ -n "$DIFFSTAT" ] ; then
-            DIFFADDED=$(echo $DIFFSTAT | grep insertion |
-                        sed -e 's/.* \([0-9][0-9]*\) insertion.*/\1/')
-            DIFFREMOVED=$(echo $DIFFSTAT | grep deletion | 
-                          sed -e 's/.* \([0-9][0-9]*\) deletion.*/\1/')
-            STATUS="$GREEN+${DIFFADDED:-0}$NORM/$RED-${DIFFREMOVED:-0}$NORM"
-        fi
-        if [ -n "$AHEAD" ] ; then
-            AHEAD="$BLUE^$AHEAD$NORM"
-            if [ -n "$STATUS" ] ; then
-                STATUS="$STATUS/$AHEAD"
-            else
-                STATUS=$AHEAD
-            fi
-        fi
-        echo -e "$BRANCH@$ORIGIN($STATUS)"
+    STATUS=$(git status -b -uno --porcelain 2>/dev/null)
+    AHEAD=$(echo $STATUS | grep '\[ahead ' |
+            sed -e 's/.* \[ahead \([0-9][0-9]*\)\].*/\1/')
+    BRANCH=$(echo $STATUS | sed -e 's/## \([^\.][^\.]*\).*/\1/')
+    if [ "$BRANCH" != "master" ] ; then
+        BRANCH_SUFFIX="${BOLD}#${BRANCH}${NORM}"
+    else
+        BRANCH_SUFFIX=""
     fi
+    DIFFSTAT=$(git diff --shortstat)
+    STATUS=
+    if [ -n "$DIFFSTAT" ] ; then
+        DIFFADDED=$(echo $DIFFSTAT | grep insertion |
+                    sed -e 's/.* \([0-9][0-9]*\) insertion.*/\1/')
+        DIFFREMOVED=$(echo $DIFFSTAT | grep deletion | 
+                      sed -e 's/.* \([0-9][0-9]*\) deletion.*/\1/')
+        STATUS="$GREEN+${DIFFADDED:-0}$NORM/$RED-${DIFFREMOVED:-0}$NORM"
+    fi
+    if [ -n "$AHEAD" ] ; then
+        AHEAD="$BLUE^$AHEAD$NORM"
+        if [ -n "$STATUS" ] ; then
+            STATUS="$STATUS/$AHEAD"
+        else
+            STATUS=$AHEAD
+        fi
+    fi
+    echo -e "${ORIGIN}${BRANCH_SUFFIX}($STATUS)"
 }
 
 # shortcut to awk column selection based on spaces, colons and commas.
@@ -116,6 +130,7 @@ if [ -n "$(tty)" ] ; then
 	PS4=": [.4] ; "
 fi
 
+export LESS="-i -X -R -F"
 export EDITOR=vim
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
 
@@ -125,5 +140,7 @@ export CSCOPE_DB=.cscope_db
 
 PATH=$PATH:~/project/odyssey/tools/bin
 
-ODYSSEY_DEFAULT_STACK=mayfield
-ODYSSEY_STACK_PASSPHRASE=foobar
+export ODYSSEY_DEFAULT_STACK=mayfield
+export ANDROID_HOME=${HOME}/Android/Sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
