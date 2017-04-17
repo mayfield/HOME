@@ -14,7 +14,7 @@ alias reboot='echo use full path to reboot'
 alias ll='ls -alrt'
 alias ls='ls -F'
 alias lr='ls -Frt'
-alias grep='grep --color --line-buffered'
+alias grep='grep --binary-files=text --color --line-buffered'
 alias psg='ps -aef | grep -v psg | grep -v grep | grep'
 alias mps='ps -eo pid,ppid,user,bsdstart,bsdtime,tty,ni,pcpu,rss,comm --sort c'
 alias awkfirst='awk "{ print \$1 }"'
@@ -33,14 +33,8 @@ function sshhome() {
 function ecmip() {
     NAME=$1
     shift
-    ecm routers search "name:$NAME" \
-        --plain \
-        --table-padding 0 \
-        --no-clip \
-        --table-width 0 \
-        --columns 7 \
-        --no-header \
-        $@
+    IP=$(ecm routers search "name:$NAME" --csv --columns 7 --no-header $@)
+    echo $IP | tr -d '\r'
 }
 
 function dpsg() {
@@ -110,6 +104,10 @@ function git-repo-status() {
     fi
 }
 
+# shortcut to awk column selection based on spaces, colons and commas.
+function column() {
+    awk -F'[ \t,:]+' '{ print $'$1' }'
+}
 
 if [ -n "$(tty)" ] ; then
 	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n:; "
@@ -121,8 +119,11 @@ fi
 export EDITOR=vim
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
 
-export GOPATH=~/go
+export GOPATH=~/project/.go
 PATH=$PATH:$GOPATH/bin
 export CSCOPE_DB=.cscope_db
 
 PATH=$PATH:~/project/odyssey/tools/bin
+
+ODYSSEY_DEFAULT_STACK=mayfield
+ODYSSEY_STACK_PASSPHRASE=foobar
