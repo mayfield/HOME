@@ -1,0 +1,313 @@
+[org/gnome/terminal/legacy/keybindings]
+find='<Primary><Shift>f'
+
+[org/gnome/terminal/legacy]
+menu-accelerator-enabled=false
+schema-version=uint32 3
+default-show-menubar=false
+theme-variant='system'
+
+[org/gnome/terminal/legacy/profiles:/:6677cbda-73b7-400b-86f1-e16e23626886]
+foreground-color='rgb(255,255,255)'
+visible-name='Teal'
+login-shell=true
+palette=['rgb(7,54,66)', 'rgb(245,133,89)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(102,177,255)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']
+default-size-columns=84
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+use-transparent-background=false
+font='Meslo LG M DZ 9'
+bold-color-same-as-fg=true
+background-color='rgb(29,116,128)'
+audible-bell=true
+scrollback-lines=100000
+scrollbar-policy='always'
+
+[org/gnome/terminal/legacy/profiles:/:70e8543b-6934-49ea-ac34-a30dd2e7e1e6]
+foreground-color='rgb(0,0,0)'
+visible-name='Green'
+login-shell=true
+palette=['rgb(0,0,0)', 'rgb(204,0,0)', 'rgb(213,237,212)', 'rgb(210,183,62)', 'rgb(18,68,131)', 'rgb(117,80,123)', 'rgb(36,252,255)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(227,235,226)', 'rgb(255,228,110)', 'rgb(141,165,195)', 'rgb(173,127,168)', 'rgb(123,253,255)', 'rgb(238,238,236)']
+default-size-columns=84
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+use-transparent-background=false
+font='Meslo LG M DZ 9'
+bold-color-same-as-fg=true
+background-color='rgb(82,195,107)'
+audible-bell=true
+scrollback-lines=100000
+scrollbar-policy='always'
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+foreground-color='rgb(46,52,54)'
+visible-name='White'
+login-shell=true
+palette=['rgb(0,0,0)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+default-size-columns=86
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+use-transparent-background=false
+font='Meslo LG L DZ 9'
+scrollback-unlimited=false
+bold-color-same-as-fg=true
+bold-color='rgb(237,212,0)'
+background-color='rgb(248,248,249)'
+audible-bell=true
+scrollback-lines=100000
+scrollbar-policy='always'
+
+[org/gnome/terminal/legacy/profiles:/:73479d2a-4bbd-4d1d-955e-3634cc3f7624]
+foreground-color='rgb(255,255,255)'
+visible-name='Blue'
+login-shell=true
+palette=['rgb(0,0,0)', 'rgb(255,121,121)', 'rgb(172,255,94)', 'rgb(255,218,53)', 'rgb(7,169,255)', 'rgb(230,75,255)', 'rgb(44,252,255)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(255,170,170)', 'rgb(200,255,145)', 'rgb(255,243,150)', 'rgb(110,205,255)', 'rgb(255,143,243)', 'rgb(139,255,255)', 'rgb(238,238,236)']
+default-size-columns=84
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+use-transparent-background=false
+font='Meslo LG M DZ 9'
+bold-color-same-as-fg=true
+background-color='rgb(17,87,161)'
+audible-bell=true
+scrollback-lines=100000
+scrollbar-policy='always'
+
+[org/gnome/terminal/legacy/profiles:/:c1fb8975-5949-484f-b07b-55716676f6f2]
+foreground-color='rgb(255,255,255)'
+visible-name='Black'
+login-shell=true
+palette=['rgb(0,0,0)', 'rgb(207,47,47)', 'rgb(78,154,6)', 'rgb(221,197,89)', 'rgb(47,127,230)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(240,240,240)', 'rgb(85,87,83)', 'rgb(213,35,35)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(86,160,255)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(255,255,255)']
+default-size-columns=84
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+use-transparent-background=false
+font='Meslo LG M DZ 9'
+bold-color-same-as-fg=true
+background-color='rgb(0,0,0)'
+audible-bell=true
+scrollback-lines=100000
+scrollbar-policy='always'
+
+[org/gnome/terminal/legacy/profiles:/:65785010-b2cf-4a15-8519-a2ad28b7cf7a]
+foreground-color='rgb(0,0,0)'
+visible-name='Small'
+login-shell=true
+palette=['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']
+default-size-columns=84
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+use-transparent-background=false
+font='DejaVu Sans Mono 7'
+bold-color-same-as-fg=true
+background-color='rgb(255,255,255)'
+audible-bell=true
+scrollback-lines=100000
+scrollbar-policy='always'
+
+[org/gnome/terminal/legacy/profiles:]
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', 'c1fb8975-5949-484f-b07b-55716676f6f2', '73479d2a-4bbd-4d1d-955e-3634cc3f7624', '65785010-b2cf-4a15-8519-a2ad28b7cf7a', '6677cbda-73b7-400b-86f1-e16e23626886', '70e8543b-6934-49ea-ac34-a30dd2e7e1e6']
+default='b1dcc9dd-5262-4d8d-a863-c897e6d979b9'
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-battery-type='nothing'
+sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-timeout=1800
+
+[org/gnome/gedit/preferences/ui]
+show-tabs-mode='auto'
+
+[org/gnome/gedit/plugins/filebrowser]
+virtual-root='file:///home/mayfield/Downloads'
+tree-view=true
+root='file:///'
+
+[org/gnome/gedit/plugins]
+active-plugins=['docinfo', 'time', 'modelines', 'spell', 'filebrowser']
+
+[org/gnome/gedit/state/window]
+size=(1270, 2065)
+state=128
+bottom-panel-size=140
+side-panel-size=200
+side-panel-active-page='GeditWindowDocumentsPanel'
+
+[org/gnome/calculator]
+target-currency=''
+show-zeroes=false
+source-currency=''
+show-thousands=false
+button-mode='programming'
+target-units='radian'
+word-size=64
+number-format='automatic'
+angle-units='degrees'
+base=10
+source-units='degree'
+accuracy=9
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='icon-view'
+search-filter-time-type='last_modified'
+
+[org/gnome/nautilus/window-state]
+geometry='3830x2065+5+5'
+maximized=false
+
+[org/gnome/system/location]
+enabled=false
+
+[org/gnome/file-roller/listing]
+sort-method='name'
+name-column-width=599
+sort-type='ascending'
+list-mode='as-folder'
+show-path=false
+
+[org/gnome/file-roller/ui]
+sidebar-width=200
+window-height=651
+window-width=1289
+
+[org/gnome/evolution-data-server]
+migrated=true
+
+[org/gnome/desktop/app-folders]
+folder-children=['Utilities', 'Sundry']
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+translate=true
+categories=['X-GNOME-Utilities']
+apps=['org.gnome.baobab.desktop', 'deja-dup-preferences.desktop', 'eog.desktop', 'evince.desktop', 'org.gnome.FileRoller.desktop', 'gnome-calculator.desktop', 'gnome-dictionary.desktop', 'org.gnome.Characters.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.font-viewer.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Screenshot.desktop', 'gnome-system-log.desktop', 'gnome-system-monitor.desktop', 'gnome-tweak-tool.desktop', 'gucharmap.desktop', 'seahorse.desktop', 'vinagre.desktop', 'yelp.desktop']
+name='X-GNOME-Utilities.directory'
+
+[org/gnome/desktop/app-folders/folders/Sundry]
+translate=true
+categories=['X-GNOME-Sundry']
+apps=['alacarte.desktop', 'authconfig.desktop', 'ca.desrt.dconf-editor.desktop', 'fedora-release-notes.desktop', 'firewall-config.desktop', 'flash-player-properties.desktop', 'gconf-editor.desktop', 'gnome-abrt.desktop', 'gnome-power-statistics.desktop', 'ibus-setup-anthy.desktop', 'ibus-setup.desktop', 'ibus-setup-hangul.desktop', 'ibus-setup-libbopomofo.desktop', 'ibus-setup-libpinyin.desktop', 'ibus-setup-m17n.desktop', 'ibus-setup-typing-booster.desktop', 'im-chooser.desktop', 'itweb-settings.desktop', 'jhbuild.desktop', 'javaws.desktop', 'java-1.7.0-openjdk-jconsole.desktop', 'java-1.7.0-openjdk-policytool.desktop', 'log4j-chainsaw.desktop', 'log4j-logfactor5.desktop', 'nm-connection-editor.desktop', 'orca.desktop', 'setroubleshoot.desktop', 'system-config-date.desktop', 'system-config-firewall.desktop', 'system-config-keyboard.desktop', 'system-config-language.desktop', 'system-config-printer.desktop', 'system-config-users.desktop', 'vino-preferences.desktop']
+name='X-GNOME-Sundry.directory'
+
+[org/gnome/desktop/notifications]
+application-children=['org-gnome-terminal', 'abrt-applet', 'org-gnome-software']
+
+[org/gnome/desktop/notifications/application/org-gnome-terminal]
+application-id='org.gnome.Terminal.desktop'
+
+[org/gnome/desktop/notifications/application/abrt-applet]
+application-id='abrt-applet.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-software]
+application-id='org.gnome.Software.desktop'
+
+[org/gnome/desktop/privacy]
+report-technical-problems=false
+
+[org/gnome/desktop/interface]
+gtk-im-module='gtk-im-context-simple'
+toolkit-accessibility=true
+
+[org/gnome/desktop/input-sources]
+current=uint32 0
+sources=[('xkb', 'us')]
+xkb-options=@as []
+
+[org/gnome/eog/view]
+background-color='rgb(0,0,0)'
+use-background-color=true
+
+[org/gnome/rhythmbox/library/source]
+paned-position=128
+show-browser=true
+
+[org/gnome/rhythmbox/plugins/audioscrobbler/Last.fm]
+scrobbling-enabled=true
+
+[org/gnome/rhythmbox/plugins/audioscrobbler/Libre.fm]
+scrobbling-enabled=true
+
+[org/gnome/rhythmbox/plugins/iradio]
+initial-stations-loaded=true
+
+[org/gnome/rhythmbox/plugins/iradio/source]
+show-browser=true
+
+[org/gnome/rhythmbox/plugins]
+active-plugins=['ipod', 'cd-recorder', 'daap', 'mtpdevice', 'power-manager', 'generic-player', 'mmkeys', 'notification', 'dbus-media-server', 'rb', 'artsearch', 'mpris', 'iradio', 'android', 'audiocd', 'audioscrobbler']
+seen-plugins=['visualizer', 'ipod', 'cd-recorder', 'daap', 'mtpdevice', 'pythonconsole', 'notification', 'grilo', 'dbus-media-server', 'rb', 'replaygain', 'magnatune', 'lyrics', 'artsearch', 'soundcloud', 'sendto', 'webremote', 'mpris', 'im-status', 'audioscrobbler', 'fmradio']
+
+[org/gnome/rhythmbox/player]
+volume=1.0
+
+[org/gnome/rhythmbox/podcast/source]
+paned-position=128
+show-browser=true
+
+[org/gnome/rhythmbox]
+position=(2447, 1291)
+size=(1387, 395)
+
+[org/gnome/rhythmbox/rhythmdb]
+locations=['file:///home/mayfield']
+
+[org/gnome/evolution/mail]
+forward-style-name='attached'
+image-loading-policy='never'
+junk-check-incoming=true
+browser-close-on-reply-policy='ask'
+search-gravatar-for-photo=false
+reply-style-name='quoted'
+
+[org/gnome/evolution/calendar]
+work-day-thursday=true
+work-day-sunday=false
+prefer-new-item=''
+work-day-saturday=false
+work-day-tuesday=true
+week-start-day-name='monday'
+work-day-wednesday=true
+work-day-monday=true
+work-day-friday=true
+
+[org/gnome/software]
+check-timestamp=int64 1493209489
+
+[org/gnome/gnome-system-monitor]
+show-dependencies=false
+current-tab='disks'
+cpu-colors=[(uint32 0, '#FF6E00'), (1, '#CB0C29'), (2, '#49A835'), (3, '#2D7DB3'), (4, '#f25915e815e8'), (5, '#f25915e815e8'), (6, '#f25915e815e8'), (7, '#f25915e815e8')]
+maximized=false
+window-state=(1069, 1044, 639, 494)
+show-whose-processes='user'
+
+[org/gnome/gnome-system-monitor/disktreenew]
+col-6-visible=true
+col-6-width=0
+
+[org/gtk/settings/file-chooser]
+sort-column='name'
+sidebar-width=195
+window-position=(2660, 656)
+show-size-column=true
+show-hidden=false
+window-size=(1080, 810)
+sort-directories-first=false
+date-format='regular'
+sort-order='ascending'
+location-mode='path-bar'
+
+[org/gtk/settings/color-chooser]
+selected-color=(true, 0.8666666666666667, 0.77168707482993193, 0.34955555555555556, 1.0)
+custom-colors=[(0.8666666666666667, 0.77168707482993193, 0.34955555555555556, 1.0), (0.78000000000000003, 0.65726938775510202, 0.11179999999999998, 1.0), (0.83666666666666667, 0.13665555555555556, 0.13665555555555556, 1.0), (0.81333333333333335, 0.18435555555555558, 0.18435555555555558, 1.0), (0.81000000000000005, 0.5535000000000001, 0.5535000000000001, 1.0), (0.80000000000000004, 0.12800000000000003, 0.12800000000000003, 1.0), (0.186, 0.49837499999999996, 0.90000000000000002, 1.0), (0.16266666666666663, 0.44733333333333336, 0.81333333333333335, 1.0)]
