@@ -79,9 +79,9 @@ function git-repo-status() {
         return
     fi
     if (echo $URL | grep -qE '\w+:\/\/') ; then
-        ORIGIN=$(echo $URL | sed -E 's/\w+:\/\/[^\/]+\/(.*?)(\.git|$)/\1/')
+        ORIGIN=$(echo $URL | sed -E 's/[a-zA-Z]+:\/\/[^\/]+\/([^\.]*).*/\1/')
     else
-        ORIGIN=$(echo $URL | sed -E 's/\w+@[^:]+:(.*?)(\.git|$)/\1/')
+        ORIGIN=$(echo $URL | sed -E 's/[a-zA-Z]+@[^:]+:([^\.]*).*/\1/')
     fi
     NORM="\033[0m"
     BOLD="\033[1m"
