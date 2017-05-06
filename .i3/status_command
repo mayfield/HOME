@@ -1,0 +1,20 @@
+#!/bin/sh
+
+export LANG=en_US.UTF-8
+
+
+NETBW_FILE=/tmp/netbw_eth.$$
+netbw enp0s31f6 --loop > $NETBW_FILE &
+MB_FAN=/sys/devices/platform/nct6775.656/hwmon/hwmon1/fan1_input 
+CPU_FAN=/sys/devices/platform/nct6775.656/hwmon/hwmon1/fan2_input 
+
+
+i3status | while true; do
+    read statusline
+	cpuspeed=$(cpuspeed)
+    cpufan=$(cat $CPU_FAN)
+    mbfan=$(cat $MB_FAN)
+	netbw=$(tail -n1 $NETBW_FILE)
+    echo "$netbw" > $NETBW_FILE  # trim
+	echo "${netbw} | ${cpuspeed}Mhz | fan rpm: CPU ${cpufan}, BOARD ${mbfan} | $statusline"
+done

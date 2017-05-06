@@ -1,0 +1,185 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+font pango: Source Sans Pro 9
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal 
+bindsym $mod+Shift+Return exec gnome-terminal --role=Floating
+
+bindsym Control+$mod+backslash exec ~/bin/volume up
+bindsym Control+mod1+backslash exec ~/bin/volume up
+bindsym Control+$mod+Return exec ~/bin/volume down
+bindsym Control+mod1+Return exec ~/bin/volume down
+bindsym Control+$mod+m exec ~/bin/google-chrome-scalehack
+
+
+# kill focused window
+bindsym $mod+Shift+Q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+r exec dmenu_run
+
+# change focus
+#bindsym Control+h focus left
+#bindsym Control+j focus down
+#bindsym Control+k focus up
+#bindsym Control+l focus right
+
+# move focused window
+bindsym Control+Shift+h move left
+bindsym Control+Shift+j move down
+bindsym Control+Shift+k move up
+bindsym Control+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+p focus parent
+
+# focus the child container
+#bindsym $mod+c focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+exclam move container to workspace 1
+bindsym $mod+Shift+at move container to workspace 2
+bindsym $mod+Shift+numbersign move container to workspace 3
+bindsym $mod+Shift+dollar move container to workspace 4
+bindsym $mod+Shift+percent move container to workspace 5
+bindsym $mod+Shift+asciicircum move container to workspace 6
+bindsym $mod+Shift+ampersand move container to workspace 7
+bindsym $mod+Shift+asterisk move container to workspace 8
+bindsym $mod+Shift+parenleft move container to workspace 9
+bindsym $mod+Shift+parenright move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+R restart
+# exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+E exit
+
+bindsym $mod+Shift+L exec lockscreen
+
+
+# screen capture
+bindsym Shift+Mod1+3 exec gnome-screenshot
+bindsym Shift+Mod1+4 exec gnome-screenshot -a
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym 113 resize shrink width 10 px or 10 ppt
+        bindsym 116 resize grow height 10 px or 10 ppt
+        bindsym 111 resize shrink height 10 px or 10 ppt
+        bindsym 114 resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+#bindsym $mod+s mode "resize"
+
+#force_xinerama yes
+focus_follows_mouse yes
+for_window [class="Pidgin" window_role="conversation"] floating enable
+for_window [class="Empathy" window_role="chat"] floating enable
+for_window [class="Gnote"] floating enable
+for_window [window_role="Msgcompose"] floating enable
+for_window [window_role="Floating"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [class="MPlayer"] floating enable
+
+
+#bar {
+	#output DVI-D-0
+	#output HDMI-0
+#	output DP-1
+#    
+#    status_command xfce4-panel
+    #font pango: Meslo LG M DZ Regular 11
+#}
+
+#bar {
+#	output HDMI-0
+#	tray_output none
+#}
+
+# class                  border  bg      text    indicator child_border
+client.focused           #3399cc #367de8 #ffffff
+client.urgent            #ee4444 #ee4444 #000000
+client.unfocused         #888888 #888888 #dddddd
+client.focused_inactive  #888888 #888888 #000000
+
+new_window normal 3
+for_window [class="Gnome-terminal"] border pixel 3
+
+exec xsetroot -solid black
+exec xset +dpms
+exec xset dpms 300 600 3600
+exec xset r rate 400 50
+exec setxkbmap -option "caps:escape"
+exec setxkbmap -option "altwin:swap_lalt_lwin"
+exec "netbw enp0s31f6 --loop > /tmp/ethbw"
+exec xfce4-panel
