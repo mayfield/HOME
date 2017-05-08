@@ -10,7 +10,7 @@ ENV_FILE="${BASH_ENV}"
 USERNAME="${LOGNAME}"
 HISTSIZE=10000000
 HISTFILESIZE=100000000
-HISTCONTROL=ignoredups:erasedups  
+HISTCONTROL=ignoredups:erasedups:ignorespace
 shopt -s histappend  # append to history file instead of replace
 # Write history file on each command
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a"
