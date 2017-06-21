@@ -29,7 +29,7 @@ endif
 
 colorscheme mayfield_silent
 
-set statusline=%<\ [%n]\ %t\ %m%r
+set statusline=%<\ [%n]\ %F\ %m%r
 set statusline+=%=
 set statusline+=\ line:\ %3l\ of\ %L,\ col:\ %2c\ (%P)\ \ 
 set laststatus=2

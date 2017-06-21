@@ -9,7 +9,7 @@ if [ -f /usr/local/etc/bash_completion ] ; then
     . /usr/local/etc/bash_completion
 fi
 
-alias vi=vim
+alias vi='vim'
 alias reboot='echo use full path to reboot'
 alias ll='ls -alrt'
 alias ls='ls -F'
