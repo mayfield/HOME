@@ -26,6 +26,7 @@ alias awsdockerenv='eval $(docker-machine env aws)'
 alias dockviz="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 alias awsconsole="aws --output text ec2 get-console-output --instance-id"
 alias sshecs='ssh -i ~/.ssh/ecs.pem -l ec2-user'
+if which colordiff 1>/dev/null 2>&1 ; then alias diff=colordiff ; fi
 
 function sshhome() {
     ssh -p 2222 $(ecmip home_gateway)
@@ -124,7 +125,7 @@ function column() {
     awk -F'[ \t,:]+' '{ print $'$1' }'
 }
 
-if [ -n "$(tty)" ] ; then
+if [ -n "$(tty)" ] && [ -n "$TERM" ] ; then
 	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n:; "
 	PS2=": [.2] ; "
 	PS3=": [.3] ; "
