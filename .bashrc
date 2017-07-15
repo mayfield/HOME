@@ -125,7 +125,7 @@ function column() {
     awk -F'[ \t,:]+' '{ print $'$1' }'
 }
 
-if [ -n "$(tty)" ] && [ -n "$TERM" ] ; then
+if [ -n "$(tty)" ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
 	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n:; "
 	PS2=": [.2] ; "
 	PS3=": [.3] ; "
