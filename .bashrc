@@ -73,6 +73,11 @@ function pytags() {
     rm -f .pyfiles
 }
 
+function filewatch() {
+    inotifywait --exclude '\.(swx|swp)' -e modify -e delete -e create -e move -r $@ 1>/dev/null 2>&1
+}
+
+
 function git-repo-status() {
     #ORIGIN=$(basename $(git config remote.origin.url 2>/dev/null) 2>/dev/null)
     URL=$(git config remote.origin.url 2>/dev/null)
