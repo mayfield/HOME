@@ -74,8 +74,8 @@ if &background == "light"
     hi Todo             cterm=standout ctermbg=Yellow ctermfg=DarkGrey
     hi Done             cterm=standout ctermbg=Gray ctermfg=White
 
-    hi SpellErrors      ctermfg=DarkRed
-    hi SpellBad         ctermfg=DarkRed
+    hi SpellErrors      ctermfg=DarkRed ctermbg=none cterm=underline,bold
+    hi SpellBad         ctermfg=DarkRed ctermbg=none cterm=underline,bold
 
     hi AsyncStatement ctermfg=202 cterm=bold
     hi AwaitStatement ctermfg=208 cterm=bold
