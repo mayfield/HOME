@@ -16,7 +16,7 @@ bindsym Control+$mod+backslash exec ~/bin/volume up
 bindsym Control+mod1+backslash exec ~/bin/volume up
 bindsym Control+$mod+Return exec ~/bin/volume down
 bindsym Control+mod1+Return exec ~/bin/volume down
-bindsym Control+$mod+m exec ~/bin/google-chrome-scalehack
+bindsym Control+$mod+m exec google-chrome
 
 
 # kill focused window
@@ -172,9 +172,11 @@ client.urgent            #ee4444 #ee4444 #000000
 client.unfocused         #888888 #888888 #dddddd
 client.focused_inactive  #888888 #888888 #000000
 
-new_window normal 3
-for_window [class="Gnome-terminal"] border pixel 3
+new_window normal 4
+#for_window [class="Gnome-terminal"] border pixel 3
 
+exec xrdb -merge ~/.Xresources
+exec xrandr --dpi 138
 exec xsetroot -solid black
 exec xset +dpms
 exec xset dpms 300 600 3600
