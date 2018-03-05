@@ -34,6 +34,8 @@ set statusline+=%=
 set statusline+=\ line:\ %3l\ of\ %L,\ col:\ %2c\ (%P)\ \ 
 set laststatus=2
 
+let g:syntastic_javascript_checkers = ["eslint"]
+
 "vim-gitgutter
 set updatetime=200
 
