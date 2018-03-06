@@ -173,7 +173,7 @@ client.unfocused         #888888 #888888 #dddddd
 client.focused_inactive  #888888 #888888 #000000
 
 new_window normal 4
-#for_window [class="Gnome-terminal"] border pixel 3
+for_window [class="Gnome-terminal"] border pixel 4
 
 exec xrdb -merge ~/.Xresources
 exec xrandr --dpi 138
