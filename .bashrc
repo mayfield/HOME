@@ -150,3 +150,6 @@ PATH=$PATH:~/project/odyssey/tools/bin
 export ODYSSEY_DEFAULT_STACK=mayfield
 
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
+
+# added by travis gem
+[ -f /home/mayfield/.travis/travis.sh ] && source /home/mayfield/.travis/travis.sh
