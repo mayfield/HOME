@@ -392,7 +392,6 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonRaiseStatement FunctionInterrupt
   HiLink pythonYieldStatement FunctionInterrupt
-  HiLink pythonAwaitStatement FunctionInterrupt
   HiLink pythonReturnStatement FunctionInterrupt
 
   HiLink pythonAsyncStatement AsyncStatement

@@ -1,0 +1,4 @@
+#!/bin/sh -e
+xset r rate 400 50
+setxkbmap -option "caps:escape"
+setxkbmap -option "altwin:swap_lalt_lwin"

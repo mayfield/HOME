@@ -16,7 +16,7 @@ bindsym Control+$mod+backslash exec ~/bin/volume up
 bindsym Control+mod1+backslash exec ~/bin/volume up
 bindsym Control+$mod+Return exec ~/bin/volume down
 bindsym Control+mod1+Return exec ~/bin/volume down
-bindsym Control+$mod+m exec google-chrome
+bindsym Control+$mod+m exec chrome
 
 
 # kill focused window
@@ -150,6 +150,8 @@ for_window [window_role="Floating"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
+for_window [class="vlc"] floating enable
+for_window [class="Vlc"] floating enable
 
 
 #bar {
@@ -178,8 +180,5 @@ for_window [class="Gnome-terminal"] border pixel 4
 exec xsetroot -solid black
 exec xset +dpms
 exec xset dpms 300 600 3600
-exec xset r rate 400 50
-exec setxkbmap -option "caps:escape"
-exec setxkbmap -option "altwin:swap_lalt_lwin"
-exec "netbw enp0s31f6 --loop > /tmp/ethbw"
-exec xfce4-panel
+exec keyboardsetup
+exec xfce4-session
