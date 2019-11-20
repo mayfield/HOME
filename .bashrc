@@ -1,5 +1,6 @@
 # .bashrc
 SHELL_SESSION_HISTORY=0
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 if [ -f /etc/bashrc ] && [ -r /etc/bashrc ] ; then
     . /etc/bashrc
