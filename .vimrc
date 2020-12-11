@@ -41,3 +41,22 @@ set updatetime=200
 
 " uncover the highlight groups for a symbol
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+
+autocmd BufEnter * :syntax sync fromstart
+
+
+func! WordProcessor()
+  " movement changes
+  map j gj
+  map k gk
+  " formatting text
+  setlocal formatoptions=1
+  setlocal noexpandtab
+  setlocal wrap
+  setlocal linebreak
+  setlocal spell spelllang=en_us
+  setlocal nobackup
+  setlocal noundofile
+  setlocal nonumber
+endfu
+com! WP call WordProcessor()
