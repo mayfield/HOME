@@ -101,7 +101,7 @@ function git-repo-status() {
     AHEAD=$(echo $STATUS | grep '\[ahead ' |
             sed -e 's/.* \[ahead \([0-9][0-9]*\)\].*/\1/')
     BRANCH=$(echo $STATUS | sed -e 's/## \([^\.][^\.]*\).*/\1/')
-    if [ "$BRANCH" != "master" ] ; then
+    if [ "$BRANCH" != "master" ] && [ "$BRANCH" != "main" ] ; then
         BRANCH_SUFFIX="${BOLD}#${BRANCH}${NORM}"
     else
         BRANCH_SUFFIX=""
