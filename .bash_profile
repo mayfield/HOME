@@ -2,7 +2,7 @@
 
 . "${HOME}/.bashrc"
 
-PATH="$PATH:/usr/local/bin:/sbin:/usr/sbin:$HOME/bin"
+PATH="$PATH:/usr/local/bin:/sbin:/usr/sbin:$HOME/bin:/usr/local/cuda/bin"
 
 BASH_ENV="${HOME}"/.bashrc
 ENV="${BASH_ENV}"

@@ -28,7 +28,7 @@ function! s:set(var, default) abort
 endfunction
 
 call s:set('g:gitgutter_enabled',                     1)
-call s:set('g:gitgutter_max_signs',                 500)
+call s:set('g:gitgutter_max_signs',                1000)
 call s:set('g:gitgutter_signs',                       1)
 call s:set('g:gitgutter_highlight_lines',             0)
 call s:set('g:gitgutter_sign_column_always',          0)
