@@ -17,6 +17,9 @@ bindsym Control+mod1+backslash exec ~/bin/volume up
 bindsym Control+$mod+Return exec ~/bin/volume down
 bindsym Control+mod1+Return exec ~/bin/volume down
 bindsym Control+$mod+m exec chrome
+bindsym --whole-window --border Control+$mod+button4 exec ~/bin/wintrans up
+bindsym --whole-window --border Control+$mod+button5 exec ~/bin/wintrans down
+
 
 
 # kill focused window
@@ -32,10 +35,10 @@ bindsym $mod+r exec dmenu_run
 #bindsym Control+l focus right
 
 # move focused window
-bindsym Control+Shift+h move left
-bindsym Control+Shift+j move down
-bindsym Control+Shift+k move up
-bindsym Control+Shift+l move right
+#bindsym Control+Shift+h move left
+#bindsym Control+Shift+j move down
+#bindsym Control+Shift+k move up
+#bindsym Control+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -185,15 +188,26 @@ for_window [class="feh"] floating enable
 #}
 
 # class                  border  bg      text    indicator child_border
-client.focused           #3399cc #367de8 #ffffff
+client.focused           #3399cc #1188ee #ffffff
 client.urgent            #ee4444 #ee4444 #000000
-client.unfocused         #888888 #888888 #dddddd
-client.focused_inactive  #888888 #888888 #000000
+client.unfocused         #334466 #334466 #dddddd
+client.focused_inactive  #334466 #334466 #dddddd
 
-new_window normal 4
-for_window [class="Gnome-terminal"] border pixel 4
+default_floating_border pixel 5
+default_border pixel 5
+# for_window [class="^.*"] border pixel 5 
+# for_window [class="Gnome-terminal"] border pixel 5 
+# for_window [class="Google-chrome"] border pixel 5
 
-exec xsetroot -solid black
+exec picom \
+    --corner-radius 10 \
+    --shadow \
+    --shadow-radius 20 \
+    --shadow-opacity .2 \
+    --shadow-offset-x -14 \
+    --shadow-offset-y -14 \
+    --shadow-exclude 'window_type *= "splash"'
+exec hsetroot -solid black
 exec xset +dpms
 exec xset dpms 300 600 3600
 exec keyboardsetup

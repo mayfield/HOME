@@ -145,9 +145,6 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/
 export GOPATH=~/project/.go
 PATH=$PATH:$GOPATH/bin
 export CSCOPE_DB=.cscope_db
-
-PATH=$PATH:~/project/odyssey/tools/bin
-
 export ODYSSEY_DEFAULT_STACK=mayfield
 
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
