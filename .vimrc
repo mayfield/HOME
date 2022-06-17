@@ -22,10 +22,16 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set nofoldenable
+" Show search match info
+set shortmess-=S
 
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
+
+" Make * word search case sensitive always
+nnoremap <expr> * ':%s/\<'.expand('<cword>').'\>\C//gn<CR>``'
+
 
 colorscheme mayfield_silent
 

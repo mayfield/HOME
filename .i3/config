@@ -171,6 +171,8 @@ for_window [class="MPlayer"] floating enable
 for_window [class="vlc"] floating enable
 for_window [class="Vlc"] floating enable
 for_window [class="feh"] floating enable
+for_window [window_role="devtools"] floating enable
+for_window [title="MPlayer"] floating enable
 
 
 #bar {
@@ -199,14 +201,17 @@ default_border pixel 5
 # for_window [class="Gnome-terminal"] border pixel 5 
 # for_window [class="Google-chrome"] border pixel 5
 
-exec picom \
-    --corner-radius 10 \
+exec_always picom \
+    --corner-radius 6 \
     --shadow \
     --shadow-radius 20 \
     --shadow-opacity .2 \
     --shadow-offset-x -14 \
     --shadow-offset-y -14 \
-    --shadow-exclude 'window_type *= "splash"'
+    --fading \
+    --fade-in-step=0.1 \
+    --shadow-exclude 'window_type *= "splash"' \
+    --rounded-corners-exclude 'window_type *= "tooltip"'
 exec hsetroot -solid black
 exec xset +dpms
 exec xset dpms 300 600 3600
