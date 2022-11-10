@@ -30,7 +30,8 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 " Make * word search case sensitive always
-nnoremap <expr> * ':%s/\<'.expand('<cword>').'\>\C//gn<CR>``'
+" BUGGY
+" nnoremap <expr> * ':%s/\<'.expand('<cword>').'\>\C//gn<CR>``'
 
 
 colorscheme mayfield_silent
