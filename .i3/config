@@ -17,6 +17,8 @@ bindsym Control+mod1+backslash exec ~/bin/volume up
 bindsym Control+$mod+Return exec ~/bin/volume down
 bindsym Control+mod1+Return exec ~/bin/volume down
 bindsym Control+$mod+m exec chrome
+bindsym Control+$mod+Print exec xfce4-screenshooter -c -w
+bindsym $mod+Print exec xfce4-screenshooter -c -r
 bindsym --whole-window --border Control+$mod+button4 exec ~/bin/wintrans up
 bindsym --whole-window --border Control+$mod+button5 exec ~/bin/wintrans down
 
@@ -60,6 +62,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen toggle global
 
 # change container layout (stacked, tabbed, default)
 #bindsym $mod+s layout stacking
@@ -78,18 +81,62 @@ bindsym $mod+p focus parent
 # focus the child container
 #bindsym $mod+c focus child
 
-workspace 1 output DP-4
-workspace 2 output DP-2
-workspace 3 output DP-4
-workspace 4 output DP-2
-workspace 5 output DP-4
-workspace 6 output DP-2
-workspace 7 output DP-4
-workspace 8 output DP-2
-workspace 9 output DP-4
-workspace 10 output DP-2
+set $mon1 DP-4
+set $mon2 DP-2
+
+workspace 1a output $mon1
+workspace 2a output $mon1
+workspace 3a output $mon1
+workspace 4a output $mon1
+workspace 5a output $mon1
+workspace 6a output $mon1
+workspace 7a output $mon1
+workspace 8a output $mon1
+workspace 9a output $mon1
+
+workspace 1b output $mon2
+workspace 2b output $mon2
+workspace 3b output $mon2
+workspace 4b output $mon2
+workspace 5b output $mon2
+workspace 6b output $mon2
+workspace 7b output $mon2
+workspace 8b output $mon2
+workspace 9b output $mon2
+
+# single mon / only workspaces on primary
+workspace 1 output $mon1
+workspace 2 output $mon1
+workspace 3 output $mon1
+workspace 4 output $mon1
+workspace 5 output $mon1
+workspace 6 output $mon1
+workspace 7 output $mon1
+workspace 8 output $mon1
+workspace 9 output $mon1
+workspace 10 output $mon2
 
 # switch to workspace
+#bindsym $mod+1 exec --no-startup-id ~/bin/i3workspace goto 1
+#bindsym $mod+2 exec --no-startup-id ~/bin/i3workspace goto 2
+#bindsym $mod+3 exec --no-startup-id ~/bin/i3workspace goto 3
+#bindsym $mod+4 exec --no-startup-id ~/bin/i3workspace goto 4
+#bindsym $mod+5 exec --no-startup-id ~/bin/i3workspace goto 5
+#bindsym $mod+6 exec --no-startup-id ~/bin/i3workspace goto 6
+#bindsym $mod+7 exec --no-startup-id ~/bin/i3workspace goto 7
+#bindsym $mod+8 exec --no-startup-id ~/bin/i3workspace goto 8
+#bindsym $mod+9 exec --no-startup-id ~/bin/i3workspace goto 9
+#bindsym $mod+Shift+1 exec --no-startup-id ~/bin/i3workspace move 1
+#bindsym $mod+Shift+2 exec --no-startup-id ~/bin/i3workspace move 2
+#bindsym $mod+Shift+3 exec --no-startup-id ~/bin/i3workspace move 3
+#bindsym $mod+Shift+4 exec --no-startup-id ~/bin/i3workspace move 4
+#bindsym $mod+Shift+5 exec --no-startup-id ~/bin/i3workspace move 5
+#bindsym $mod+Shift+6 exec --no-startup-id ~/bin/i3workspace move 6
+#bindsym $mod+Shift+7 exec --no-startup-id ~/bin/i3workspace move 7
+#bindsym $mod+Shift+8 exec --no-startup-id ~/bin/i3workspace move 8
+#bindsym $mod+Shift+9 exec --no-startup-id ~/bin/i3workspace move 9
+
+# switch to workspace (single mon / only primary)
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -100,18 +147,17 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
-# move focused container to workspace
-bindsym $mod+Shift+exclam move container to workspace 1
-bindsym $mod+Shift+at move container to workspace 2
-bindsym $mod+Shift+numbersign move container to workspace 3
-bindsym $mod+Shift+dollar move container to workspace 4
-bindsym $mod+Shift+percent move container to workspace 5
-bindsym $mod+Shift+asciicircum move container to workspace 6
-bindsym $mod+Shift+ampersand move container to workspace 7
-bindsym $mod+Shift+asterisk move container to workspace 8
-bindsym $mod+Shift+parenleft move container to workspace 9
-bindsym $mod+Shift+parenright move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -173,6 +219,7 @@ for_window [class="Vlc"] floating enable
 for_window [class="feh"] floating enable
 for_window [window_role="devtools"] floating enable
 for_window [title="MPlayer"] floating enable
+for_window [class="Sauce for Zwift™"] floating enable
 
 
 #bar {
@@ -201,17 +248,17 @@ default_border pixel 5
 # for_window [class="Gnome-terminal"] border pixel 5 
 # for_window [class="Google-chrome"] border pixel 5
 
-exec_always picom \
-    --corner-radius 6 \
-    --shadow \
-    --shadow-radius 20 \
-    --shadow-opacity .2 \
-    --shadow-offset-x -14 \
-    --shadow-offset-y -14 \
-    --fading \
-    --fade-in-step=0.1 \
-    --shadow-exclude 'window_type *= "splash"' \
-    --rounded-corners-exclude 'window_type *= "tooltip"'
+#exec_always picom \
+#    --corner-radius 6 \
+#    --shadow \
+#    --shadow-radius 20 \
+#    --shadow-opacity .2 \
+#    --shadow-offset-x -14 \
+#    --shadow-offset-y -14 \
+#    --fading \
+#    --fade-in-step=0.1 \
+#    --shadow-exclude 'window_type *= "splash"' \
+#    --rounded-corners-exclude 'window_type *= "tooltip"'
 exec hsetroot -solid black
 exec xset +dpms
 exec xset dpms 300 600 3600
