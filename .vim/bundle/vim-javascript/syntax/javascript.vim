@@ -109,7 +109,9 @@ syntax keyword jsTry                    try             skipwhite skipempty next
 syntax keyword jsFinally      contained finally         skipwhite skipempty nextgroup=jsFinallyBlock
 syntax keyword jsCatch        contained catch           skipwhite skipempty nextgroup=jsParenCatch,jsTryCatchBlock
 syntax keyword jsException              throw
-syntax keyword jsAsyncKeyword           async await
+syntax keyword jsAsyncKeyword           async
+syntax keyword jsAwaitKeyword           await
+syntax keyword jsYieldKeyword           yield
 syntax match   jsSwitchColon   contained /::\@!/        skipwhite skipempty nextgroup=jsSwitchBlock
 
 " Keywords
@@ -236,7 +238,7 @@ if exists("javascript_plugin_flow")
   runtime extras/flow.vim
 endif
 
-syntax cluster jsExpression  contains=jsBracket,jsParen,jsObject,jsTernaryIf,jsTaggedTemplate,jsTemplateString,jsString,jsRegexpString,jsNumber,jsFloat,jsOperator,jsOperatorKeyword,jsBooleanTrue,jsBooleanFalse,jsNull,jsFunction,jsArrowFunction,jsGlobalObjects,jsExceptions,jsFutureKeys,jsDomErrNo,jsDomNodeConsts,jsHtmlEvents,jsFuncCall,jsUndefined,jsNan,jsPrototype,jsBuiltins,jsNoise,jsClassDefinition,jsArrowFunction,jsArrowFuncArgs,jsParensError,jsComment,jsArguments,jsThis,jsSuper,jsDo,jsForAwait,jsAsyncKeyword,jsStatement,jsDot
+syntax cluster jsExpression  contains=jsBracket,jsParen,jsObject,jsTernaryIf,jsTaggedTemplate,jsTemplateString,jsString,jsRegexpString,jsNumber,jsFloat,jsOperator,jsOperatorKeyword,jsBooleanTrue,jsBooleanFalse,jsNull,jsFunction,jsArrowFunction,jsGlobalObjects,jsExceptions,jsFutureKeys,jsDomErrNo,jsDomNodeConsts,jsHtmlEvents,jsFuncCall,jsUndefined,jsNan,jsPrototype,jsBuiltins,jsNoise,jsClassDefinition,jsArrowFunction,jsArrowFuncArgs,jsParensError,jsComment,jsArguments,jsThis,jsSuper,jsDo,jsForAwait,jsAsyncKeyword,jsAwaitKeyword,jsYieldKeyword,jsStatement,jsDot
 syntax cluster jsAll         contains=@jsExpression,jsStorageClass,jsConditional,jsWhile,jsFor,jsReturn,jsException,jsTry,jsNoise,jsBlockLabel,jsBlock
 
 " Define the default highlighting.
@@ -278,7 +280,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsConditional          Conditional
   HiLink jsBranch               Conditional
   HiLink jsLabel                Label
-  HiLink jsReturn               Statement
+"  HiLink jsReturn               Statement
   HiLink jsWhile                jsRepeat
   HiLink jsFor                  jsRepeat
   HiLink jsRepeat               Repeat
@@ -288,8 +290,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsTry                  Exception
   HiLink jsFinally              Exception
   HiLink jsCatch                Exception
-  HiLink jsAsyncKeyword         Keyword
-  HiLink jsForAwait             Keyword
+"  HiLink jsAsyncKeyword         Keyword
+"  HiLink jsForAwait             Keyword
   HiLink jsArrowFunction        Type
   HiLink jsFunction             Type
   HiLink jsGenerator            jsFunction
@@ -384,6 +386,16 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsHtmlElemFuncs        PreProc
 
   HiLink jsCssStyles            Label
+
+  HiLink jsException            FunctionInterrupt
+  HiLink jsYieldKeyword         FunctionInterrupt
+  HiLink jsReturn               FunctionInterrupt
+   
+  HiLink jsAsyncKeyword         AsyncStatement
+  HiLink jsAwaitKeyword         AwaitStatement
+  HiLink jsForAwait             AwaitStatement
+
+  HiLink jsThis                 SelfIdent
 
   delcommand HiLink
 endif

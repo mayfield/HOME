@@ -71,6 +71,7 @@ if &background == "light"
     hi Folded           ctermbg=Grey ctermfg=White
     "hi Error            cterm=reverse ctermbg=124 ctermfg=White
     hi Error            ctermbg=124 ctermfg=White
+    hi ErrorMsg         ctermbg=124 ctermfg=White
     hi Todo             cterm=standout ctermbg=Yellow ctermfg=DarkGrey
     hi Done             cterm=standout ctermbg=Gray ctermfg=White
 
@@ -83,6 +84,7 @@ if &background == "light"
     hi pythonDecoratorName ctermfg=28
     hi pythonDecoratorDot ctermfg=232
     hi Question         cterm=bold
+    hi WarningMsg       ctermbg=124 ctermfg=White
 else
     hi LineNr           ctermbg=234 ctermfg=240
     hi StatusLine       ctermbg=248 ctermfg=236
@@ -126,6 +128,7 @@ else
     hi Operator         ctermfg=202
     hi Ignore           ctermfg=DarkBlue
     hi Error            ctermbg=88 ctermfg=White
+    hi ErrorMsg         ctermbg=88 ctermfg=White
     hi Todo             cterm=standout ctermbg=Yellow ctermfg=DarkGrey
     hi Done             cterm=standout ctermbg=Gray ctermfg=White
 
