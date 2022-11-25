@@ -166,7 +166,7 @@ bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+E exit
 
-bindsym $mod+Shift+L exec lockscreen
+bindsym $mod+Shift+L exec xflock4
 
 
 # screen capture
@@ -259,8 +259,8 @@ default_border pixel 5
 #    --fade-in-step=0.1 \
 #    --shadow-exclude 'window_type *= "splash"' \
 #    --rounded-corners-exclude 'window_type *= "tooltip"'
-exec hsetroot -solid black
-exec xset +dpms
-exec xset dpms 300 600 3600
+#exec hsetroot -solid black
+#exec xset +dpms
+#exec xset dpms 300 600 3600
 exec keyboardsetup
 exec xfce4-session
