@@ -97,12 +97,14 @@ function git-repo-status() {
     GREEN="\033[32m"
     CYAN="\033[36m"
     BLUE="\033[34m"
-    STATUS=$(git status -b -uno --porcelain 2>/dev/null)
+    STATUS=$(git status -b -uno --porcelain 2>/dev/null | head -n1)
     AHEAD=$(echo $STATUS | grep '\[ahead ' |
             sed -e 's/.* \[ahead \([0-9][0-9]*\)\].*/\1/')
     BRANCH=$(echo $STATUS | sed -e 's/## \([^\.][^\.]*\).*/\1/')
-    if [ "$BRANCH" != "master" ] && [ "$BRANCH" != "main" ] ; then
+    if [ "$BRANCH" != "master" ] && [ "$BRANCH" != "main" ] && [ "$BRANCH" != "HEAD (no branch)" ]; then
         BRANCH_SUFFIX="${BOLD}#${BRANCH}${NORM}"
+    elif [ "$BRANCH" == "HEAD (no branch)" ]; then
+        BRANCH_SUFFIX="${BOLD}@$(git describe --tags)${NORM}"
     else
         BRANCH_SUFFIX=""
     fi
@@ -111,7 +113,7 @@ function git-repo-status() {
     if [ -n "$DIFFSTAT" ] ; then
         DIFFADDED=$(echo $DIFFSTAT | grep insertion |
                     sed -e 's/.* \([0-9][0-9]*\) insertion.*/\1/')
-        DIFFREMOVED=$(echo $DIFFSTAT | grep deletion | 
+        DIFFREMOVED=$(echo $DIFFSTAT | grep deletion |
                       sed -e 's/.* \([0-9][0-9]*\) deletion.*/\1/')
         STATUS="$GREEN+${DIFFADDED:-0}$NORM/$RED-${DIFFREMOVED:-0}$NORM"
     fi
@@ -123,7 +125,7 @@ function git-repo-status() {
             STATUS=$AHEAD
         fi
     fi
-    echo -e "${ORIGIN}${BRANCH_SUFFIX}($STATUS)"
+    echo -e "$(basename $(dirname ${ORIGIN}))/$(basename ${ORIGIN})${BRANCH_SUFFIX}($STATUS)"
 }
 
 # shortcut to awk column selection based on spaces, colons and commas.
@@ -151,3 +153,5 @@ export ODYSSEY_DEFAULT_STACK=mayfield
 
 # added by travis gem
 [ -f /home/mayfield/.travis/travis.sh ] && source /home/mayfield/.travis/travis.sh
+
+export SYSTEMD_COLORS=false
