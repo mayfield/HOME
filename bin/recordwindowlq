@@ -19,9 +19,10 @@ done
 ffmpeg -video_size ${WIDTH}x${HEIGHT} \
     -framerate $FRAMERATE \
     -f x11grab \
-    -i :0.0+${XOFFT},${YOFFT} \
+    -i :1.0+${XOFFT},${YOFFT} \
     -c:v libx264 \
-    -preset ultrafast \
+    -pix_fmt yuv420p \
+    -preset fast \
     -crf 30 \
     recordwindow-${I}.mp4 || true
 

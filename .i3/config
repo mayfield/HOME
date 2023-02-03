@@ -18,7 +18,7 @@ bindsym Control+$mod+Return exec ~/bin/volume down
 bindsym Control+mod1+Return exec ~/bin/volume down
 bindsym Control+$mod+m exec chrome
 bindsym Control+$mod+Print exec xfce4-screenshooter -c -w
-bindsym $mod+Print exec xfce4-screenshooter -c -r
+bindsym $mod+Print exec xfce4-screenshooter
 bindsym --whole-window --border Control+$mod+button4 exec ~/bin/wintrans up
 bindsym --whole-window --border Control+$mod+button5 exec ~/bin/wintrans down
 
@@ -116,26 +116,6 @@ workspace 8 output $mon1
 workspace 9 output $mon1
 workspace 10 output $mon2
 
-# switch to workspace
-#bindsym $mod+1 exec --no-startup-id ~/bin/i3workspace goto 1
-#bindsym $mod+2 exec --no-startup-id ~/bin/i3workspace goto 2
-#bindsym $mod+3 exec --no-startup-id ~/bin/i3workspace goto 3
-#bindsym $mod+4 exec --no-startup-id ~/bin/i3workspace goto 4
-#bindsym $mod+5 exec --no-startup-id ~/bin/i3workspace goto 5
-#bindsym $mod+6 exec --no-startup-id ~/bin/i3workspace goto 6
-#bindsym $mod+7 exec --no-startup-id ~/bin/i3workspace goto 7
-#bindsym $mod+8 exec --no-startup-id ~/bin/i3workspace goto 8
-#bindsym $mod+9 exec --no-startup-id ~/bin/i3workspace goto 9
-#bindsym $mod+Shift+1 exec --no-startup-id ~/bin/i3workspace move 1
-#bindsym $mod+Shift+2 exec --no-startup-id ~/bin/i3workspace move 2
-#bindsym $mod+Shift+3 exec --no-startup-id ~/bin/i3workspace move 3
-#bindsym $mod+Shift+4 exec --no-startup-id ~/bin/i3workspace move 4
-#bindsym $mod+Shift+5 exec --no-startup-id ~/bin/i3workspace move 5
-#bindsym $mod+Shift+6 exec --no-startup-id ~/bin/i3workspace move 6
-#bindsym $mod+Shift+7 exec --no-startup-id ~/bin/i3workspace move 7
-#bindsym $mod+Shift+8 exec --no-startup-id ~/bin/i3workspace move 8
-#bindsym $mod+Shift+9 exec --no-startup-id ~/bin/i3workspace move 9
-
 # switch to workspace (single mon / only primary)
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -170,8 +150,8 @@ bindsym $mod+Shift+L exec xflock4
 
 
 # screen capture
-bindsym Shift+Mod1+3 exec gnome-screenshot
-bindsym Shift+Mod1+4 exec gnome-screenshot -a
+bindsym Shift+Mod1+3 exec gnome-screenshot -i
+bindsym Shift+Mod1+4 exec xfce4-screenshooter
 
 
 # resize window (you can also use the mouse for that)
@@ -206,8 +186,6 @@ bindsym $mod+Ctrl+Left resize shrink width 1 px or 1 ppt
 
 #force_xinerama yes
 focus_follows_mouse yes
-for_window [class="Pidgin" window_role="conversation"] floating enable
-for_window [class="Empathy" window_role="chat"] floating enable
 for_window [class="Gnote"] floating enable
 for_window [window_role="Msgcompose"] floating enable
 for_window [window_role="Floating"] floating enable
@@ -220,6 +198,7 @@ for_window [class="feh"] floating enable
 for_window [window_role="devtools"] floating enable
 for_window [title="MPlayer"] floating enable
 for_window [class="Sauce for Zwift™"] floating enable
+for_window [class="Gnome-screenshot"] floating enable
 
 
 #bar {
@@ -237,16 +216,18 @@ for_window [class="Sauce for Zwift™"] floating enable
 #}
 
 # class                  border  bg      text    indicator child_border
-client.focused           #3399cc #1188ee #ffffff
+client.focused           #0e62ce #0e62ce #eeeeee
 client.urgent            #ee4444 #ee4444 #000000
-client.unfocused         #334466 #334466 #dddddd
-client.focused_inactive  #334466 #334466 #dddddd
+client.unfocused         #333333 #333333 #999999
+client.focused_inactive  #333333 #333333 #999999
 
-default_floating_border pixel 5
-default_border pixel 5
-# for_window [class="^.*"] border pixel 5 
-# for_window [class="Gnome-terminal"] border pixel 5 
-# for_window [class="Google-chrome"] border pixel 5
+default_border pixel 4
+default_floating_border normal 4
+#for_window [floating] border normal 4
+
+#for_window [class="^.*"] border pixel 5 
+for_window [class="Gnome-terminal"][floating] border normal 4
+for_window [class="Google-chrome"] border normal 4
 
 #exec_always picom \
 #    --corner-radius 6 \

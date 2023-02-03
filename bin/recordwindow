@@ -1,21 +1,35 @@
 #!/bin/sh -e
 
-FRAMERATE=30
+FRAMERATE=60
 
 echo "Click on the window to record"
 WININFO=$(xwininfo)
 
 WIDTH=$(echo "$WININFO" | grep Width: | awk '{print $2}')
+if [ $((WIDTH % 2)) -ne 0 ] ; then
+    WIDTH=$((WIDTH + 1))
+fi
 HEIGHT=$(echo "$WININFO" | grep Height: | awk '{print $2}')
+if [ $((HEIGHT % 2)) -ne 0 ] ; then
+    HEIGHT=$((HEIGHT + 1))
+fi
 XOFFT=$(echo "$WININFO" | grep "Absolute upper-left X:" | awk '{print $4}')
 YOFFT=$(echo "$WININFO" | grep "Absolute upper-left Y:" | awk '{print $4}')
 
+I=1
+while [ -f recordwindow-${I}.mp4 ] ; do
+    ((I++))
+done
 
 ffmpeg -video_size ${WIDTH}x${HEIGHT} \
     -framerate $FRAMERATE \
     -f x11grab \
     -i :1.0+${XOFFT},${YOFFT} \
     -c:v libx264 \
-    -preset ultrafast \
-    -crf 19 \
-    recordwindow.mp4
+    -pix_fmt yuv420p \
+    -preset fast \
+    -crf 21 \
+    recordwindow-${I}.mp4
+
+echo
+echo Recorded to: recordwindow-${I}.mp4
