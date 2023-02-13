@@ -84,26 +84,6 @@ bindsym $mod+p focus parent
 set $mon1 DP-4
 set $mon2 DP-2
 
-workspace 1a output $mon1
-workspace 2a output $mon1
-workspace 3a output $mon1
-workspace 4a output $mon1
-workspace 5a output $mon1
-workspace 6a output $mon1
-workspace 7a output $mon1
-workspace 8a output $mon1
-workspace 9a output $mon1
-
-workspace 1b output $mon2
-workspace 2b output $mon2
-workspace 3b output $mon2
-workspace 4b output $mon2
-workspace 5b output $mon2
-workspace 6b output $mon2
-workspace 7b output $mon2
-workspace 8b output $mon2
-workspace 9b output $mon2
-
 # single mon / only workspaces on primary
 workspace 1 output $mon1
 workspace 2 output $mon1
@@ -186,6 +166,9 @@ bindsym $mod+Ctrl+Left resize shrink width 1 px or 1 ppt
 
 #force_xinerama yes
 focus_follows_mouse yes
+
+for_window [all] title_window_icon padding 3;
+
 for_window [class="Gnote"] floating enable
 for_window [window_role="Msgcompose"] floating enable
 for_window [window_role="Floating"] floating enable
@@ -218,16 +201,20 @@ for_window [class="Gnome-screenshot"] floating enable
 # class                  border  bg      text    indicator child_border
 client.focused           #0e62ce #0e62ce #eeeeee
 client.urgent            #ee4444 #ee4444 #000000
-client.unfocused         #333333 #333333 #999999
-client.focused_inactive  #333333 #333333 #999999
+client.unfocused         #404040 #404040 #aaaaaa
+client.focused_inactive  #404040 #404040 #aaaaaa
+
+client.background #ff0000
 
 default_border pixel 4
 default_floating_border normal 4
-#for_window [floating] border normal 4
 
-#for_window [class="^.*"] border pixel 5 
-for_window [class="Gnome-terminal"][floating] border normal 4
+for_window [class="Gnome-terminal" floating] border normal 4
 for_window [class="Google-chrome"] border normal 4
+
+#gaps inner 2
+#gaps outer 0
+#smart_gaps on
 
 #exec_always picom \
 #    --corner-radius 6 \
