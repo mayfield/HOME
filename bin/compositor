@@ -1,0 +1,12 @@
+#!/bin/sh
+exec picom \
+    --corner-radius 0 \
+    --shadow \
+    --shadow-radius 0 \
+    --shadow-opacity 0 \
+    --shadow-offset-x 0 \
+    --shadow-offset-y 0 \
+    #--fading \
+    #--fade-in-step=0.1 \
+    #--shadow-exclude 'window_type *= "splash"' \
+    #--rounded-corners-exclude 'window_type *= "tooltip"'
