@@ -49,11 +49,7 @@ function stringify(passedObj, options={}) {
                 for (; index < length; index++) {
                     const key = keys[index];
                     const keyPart = `${JSON.stringify(key)}: `;
-                    const value = _stringify(
-                            obj[key],
-                            nextIndent,
-                            keyPart.length + (index === length - 1 ? 0 : 1)
-                            );
+                    const value = _stringify(obj[key], nextIndent, keyPart.length + (index === length - 1 ? 0 : 1));
                     if (value !== undefined) {
                         items.push(keyPart + value);
                     }
