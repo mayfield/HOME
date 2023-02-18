@@ -1,5 +1,4 @@
 #!/bin/sh
 exec rsync -av --delete \
-    --exclude .cache \
-    --exclude .cargo \
+    --exclude-from /home/mayfield/.rsync-excludes \
     /home/mayfield/ /media/general/archive/mayfield/backup/

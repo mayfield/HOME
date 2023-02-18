@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+import shellish
+import pandas as pd
+import plotly.graph_objects as go
+
+
+@shellish.autocommand
+def main(csv_file:str, xy:bool=False):
+    with open(csv_file) as f:
+        df = pd.read_csv(f)
+    fig = go.Figure()
+    yaxes = {}
+    cols = df.shape[1]
+    for i in range(cols):
+        col = i + 1
+        fig.add_trace(go.Scatter(y=df.iloc[:,i], name="Col %d" % col, yaxis='y%d' % col))
+        yaxes['yaxis' + (str(col) if i else '')] = {
+            "title": "Col %d" % col,
+            "side": "left",
+            "shift": -80 * i,
+            "anchor": 'free' if i else 'y',
+            "overlaying": 'y' if i else None,
+        }
+    fig.update_layout(**yaxes)
+    fig.show()
+
+main()
