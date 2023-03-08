@@ -15,11 +15,11 @@ hi CursorLine       cterm=reverse
 hi clear SignColumn
 
 if &background == "light"
-    hi LineNr           ctermbg=254 ctermfg=246
-    hi SignColumn       ctermbg=254
-    hi GitGutterAdd     ctermbg=254 ctermfg=34
-    hi GitGutterChange  ctermbg=254 ctermfg=235
-    hi GitGutterDelete  ctermbg=254 ctermfg=160
+    hi LineNr           ctermbg=255 ctermfg=246
+    hi SignColumn       ctermbg=255
+    hi GitGutterAdd     ctermbg=255 ctermfg=34
+    hi GitGutterChange  ctermbg=255 ctermfg=235
+    hi GitGutterDelete  ctermbg=255 ctermfg=160
 
     hi StatusLineNC     ctermbg=232  ctermfg=white cterm=bold
     hi StatusLine       ctermfg=black
