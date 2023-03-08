@@ -1,6 +1,15 @@
+call plug#begin('~/.vim/plugged')
+ Plug 'w0rp/ale'
+ Plug 'airblade/vim-gitgutter'
+call plug#end()
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
 execute pathogen#infect()
 filetype on
 filetype plugin on
+filetype plugin indent off
 syntax on
 set backup
 set nocompatible
@@ -29,19 +38,12 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
-" Make * word search case sensitive always
-" BUGGY
-" nnoremap <expr> * ':%s/\<'.expand('<cword>').'\>\C//gn<CR>``'
-
-
 colorscheme mayfield_silent
 
 set statusline=%<\ [%n]\ %F\ %m%r
 set statusline+=%=
 set statusline+=\ line:\ %3l\ of\ %L,\ col:\ %2c\ (%P)\ \ 
 set laststatus=2
-
-let g:syntastic_javascript_checkers = ["eslint"]
 
 "vim-gitgutter
 set updatetime=200
