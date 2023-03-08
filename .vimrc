@@ -1,12 +1,12 @@
 call plug#begin('~/.vim/plugged')
  Plug 'w0rp/ale'
  Plug 'airblade/vim-gitgutter'
+ Plug 'pangloss/vim-javascript'
 call plug#end()
 
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
-execute pathogen#infect()
 filetype on
 filetype plugin on
 filetype plugin indent off
