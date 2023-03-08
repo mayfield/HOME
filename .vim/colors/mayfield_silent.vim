@@ -11,20 +11,16 @@ let g:colors_name = "mayfield_silent"
 
 hi CursorLine       cterm=reverse
 
-" gitgutter
+" vim-gitgutter
 hi clear SignColumn
-hi link SignColumn LineNr
-hi link DiffAdd LineNr
-hi link DiffChange LineNr
-hi link DiffDelete LineNr
-hi link GitGutterAddDefault LineNr
-hi link GitGutterChangeDefault LineNr
-hi link GitGutterChangeDefault LineNr
-hi link GitGutterDeleteDefault LineNr
-
 
 if &background == "light"
-    hi LineNr           ctermbg=255 ctermfg=250
+    hi LineNr           ctermbg=254 ctermfg=246
+    hi SignColumn       ctermbg=254
+    hi GitGutterAdd     ctermbg=254 ctermfg=34
+    hi GitGutterChange  ctermbg=254 ctermfg=235
+    hi GitGutterDelete  ctermbg=254 ctermfg=160
+
     hi StatusLineNC     ctermbg=232  ctermfg=white cterm=bold
     hi StatusLine       ctermfg=black
     hi MatchParen       ctermbg=34
@@ -38,7 +34,7 @@ if &background == "light"
     hi IncSearch        cterm=reverse
     hi Search           ctermbg=red ctermfg=15
 
-    hi Normal           ctermfg=238
+    hi Normal           ctermbg=255 ctermfg=238
 "    hi Visual           ctermfg=Blue cterm=bold
     hi Comment          ctermfg=172
     hi PerlPOD          ctermfg=Brown
@@ -87,6 +83,11 @@ if &background == "light"
     hi WarningMsg       ctermbg=124 ctermfg=White
 else
     hi LineNr           ctermbg=234 ctermfg=240
+    hi SignColumn       ctermbg=234
+    hi GitGutterAdd     ctermbg=234 ctermfg=34
+    hi GitGutterChange  ctermbg=234 ctermfg=250
+    hi GitGutterDelete  ctermbg=234 ctermfg=160
+
     hi StatusLine       ctermbg=248 ctermfg=236
     hi MatchParen       ctermbg=34
 
@@ -98,7 +99,7 @@ else
     hi IncSearch        cterm=reverse
     hi Search           ctermbg=red ctermfg=15
 
-    hi Normal           ctermfg=250
+    hi Normal           ctermbg=0 ctermfg=250
     hi Comment          ctermfg=256
     hi PerlPOD          ctermfg=Brown
     hi Constant         ctermfg=LightGrey cterm=bold
