@@ -6,6 +6,11 @@ call plug#end()
 
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+"let g:ale_lint_on_text_changed = 'normal'
+"let g:ale_lint_on_insert_leave = 0
+"let g:ale_lint_on_enter = 0
+let g:ale_lint_delay = 100
+let g:ale_virtualtext_cursor = 0
 
 filetype on
 filetype plugin on
@@ -15,6 +20,7 @@ set backup
 set nocompatible
 set hlsearch
 set mousehide
+"set mouse=a
 set ignorecase
 set smartcase
 set incsearch
