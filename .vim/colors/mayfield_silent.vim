@@ -19,7 +19,7 @@ if &background == "light"
     hi SignColumn       ctermbg=255
     hi GitGutterAdd     ctermbg=255 ctermfg=34
     hi GitGutterChange  ctermbg=255 ctermfg=235
-    hi GitGutterDelete  ctermbg=255 ctermfg=160
+    hi GitGutterDelete  ctermbg=254 ctermfg=160
 
     hi StatusLineNC     ctermbg=232  ctermfg=white cterm=bold
     hi StatusLine       ctermfg=black
