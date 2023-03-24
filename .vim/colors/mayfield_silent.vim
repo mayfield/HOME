@@ -15,6 +15,7 @@ hi CursorLine       cterm=reverse
 hi clear SignColumn
 
 if &background == "light"
+    hi Include          cterm=bold
     hi LineNr           ctermbg=255 ctermfg=246
     hi SignColumn       ctermbg=255
     hi GitGutterAdd     ctermbg=255 ctermfg=34
@@ -53,7 +54,7 @@ if &background == "light"
     hi Statement        ctermfg=26
     hi FunctionInterrupt ctermfg=160
     "hi Label            ctermfg=46
-    hi Keyword          ctermfg=DarkBlue
+    hi Keyword          cterm=bold
     hi PreProc          ctermfg=DarkBlue
     hi Type             ctermfg=34
     hi SubType          ctermfg=59
@@ -62,7 +63,7 @@ if &background == "light"
     hi FunctionStatement ctermfg=196
     hi Function         ctermfg=26
     hi Repeat           ctermfg=202
-    hi Operator         ctermfg=202
+    hi Operator         ctermfg=202 cterm=bold
     hi Ignore           ctermfg=DarkBlue
     hi Folded           ctermbg=Grey ctermfg=White
     "hi Error            cterm=reverse ctermbg=124 ctermfg=White
@@ -121,12 +122,12 @@ else
     hi FunctionStatement ctermfg=160
     hi Function         ctermfg=25
     hi Label            ctermfg=yellow
-    hi Keyword          ctermfg=yellow
+    hi Keyword          cterm=bold
     hi PreProc          ctermfg=yellow
     hi Type             ctermfg=white cterm=bold
     hi SubType          ctermfg=59
     hi Repeat           ctermfg=202
-    hi Operator         ctermfg=202
+    hi Operator         ctermfg=202 cterm=bold
     hi Ignore           ctermfg=DarkBlue
     hi Error            ctermbg=88 ctermfg=White
     hi ErrorMsg         ctermbg=88 ctermfg=White

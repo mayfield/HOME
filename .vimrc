@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
  Plug 'w0rp/ale'
  Plug 'airblade/vim-gitgutter'
- Plug 'pangloss/vim-javascript'
+ Plug 'mayfield/vim-javascript'
 call plug#end()
 
 let g:ale_set_loclist = 0
@@ -11,6 +11,8 @@ let g:ale_set_quickfix = 1
 "let g:ale_lint_on_enter = 0
 let g:ale_lint_delay = 100
 let g:ale_virtualtext_cursor = 0
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
 
 filetype on
 filetype plugin on

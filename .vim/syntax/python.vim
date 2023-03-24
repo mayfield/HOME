@@ -118,18 +118,19 @@ syn keyword pythonStatement	exec return
 syn keyword pythonStatement	pass raise
 syn keyword pythonStatement	global assert
 syn keyword pythonStatement	lambda yield
-syn keyword pythonStatement	with
 syn keyword pythonClassStatement	class nextgroup=pythonClass skipwhite
 syn match   pythonClass	"[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=pythonSubClassWrap contained
 syn region  pythonSubClassWrap start="(" end=")" contained transparent contains=pythonSubClass
 syn match   pythonSubClass "[a-zA-Z_][a-zA-Z0-9_]*" contained
 syn keyword pythonFunctionStatement	def nextgroup=pythonFunction skipwhite
 syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" contained
-syn keyword pythonRepeat	for while
+syn keyword pythonRepeat	for while with
 syn keyword pythonConditional	if elif else
-syn keyword pythonPreCondit	import from as
+syn keyword pythonImport	import
+syn keyword pythonPreCondit	from as
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
+syn match pythonOperator "[-!|&+<>=%/*~^]" skipwhite skipempty
 
 if !exists("python_print_as_function") || python_print_as_function == 0
   syn keyword pythonStatement print
@@ -336,7 +337,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonFunction		Function
   HiLink pythonClassStatement		ClassStatement
   HiLink pythonClass		Class
-  HiLink pythonPreCondit	Statement
+  HiLink pythonImport	    Include
+  HiLink pythonPreCondit	Keyword
   HiLink pythonConditional	Conditional
   HiLink pythonRepeat		Repeat
   HiLink pythonException	Exception
