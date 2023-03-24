@@ -13,6 +13,11 @@ hi CursorLine       cterm=reverse
 
 " vim-gitgutter
 hi clear SignColumn
+hi clear ALEWarningSign
+hi clear ALEErrorSign
+
+hi ALEWarning ctermbg=254 cterm=underline
+hi ALEError ctermbg=223 cterm=bold
 
 if &background == "light"
     hi Include          cterm=bold
