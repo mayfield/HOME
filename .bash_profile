@@ -4,6 +4,8 @@
 
 PATH="$PATH:/usr/local/bin:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/bin"
 
+SHELL_SESSION_HISTORY=0  # macOS per/term session history
+BASH_SILENCE_DEPRECATION_WARNING=1
 BASH_ENV="${HOME}"/.bashrc
 ENV="${BASH_ENV}"
 ENV_FILE="${BASH_ENV}"

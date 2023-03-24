@@ -1,6 +1,4 @@
 # .bashrc
-SHELL_SESSION_HISTORY=0
-export BASH_SILENCE_DEPRECATION_WARNING=1
 
 if [ -f /etc/bashrc ] && [ -r /etc/bashrc ] ; then
     . /etc/bashrc
@@ -15,59 +13,15 @@ alias reboot='echo use full path to reboot'
 alias ll='ls -alrt'
 alias ls='ls -F'
 alias lr='ls -Frt'
-#alias grep='grep --binary-files=text --color --line-buffered'
 alias grep='grep --color --line-buffered'
 alias psg='ps -aef | grep -v psg | grep -v grep | grep'
 alias mps='ps -eo pid,ppid,user,bsdstart,bsdtime,tty,ni,pcpu,rss,comm --sort c'
 alias awkfirst='awk "{ print \$1 }"'
-alias dmake='make --debug=v'
-alias sshecs='ssh -i ~/.ssh/ecs.pem -l ec2-user'
-alias dockerenv='eval $(docker-machine env local)'
-alias awsdockerenv='eval $(docker-machine env aws)'
-alias dockviz="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
-alias awsconsole="aws --output text ec2 get-console-output --instance-id"
-alias sshecs='ssh -i ~/.ssh/ecs.pem -l ec2-user'
-if which colordiff 1>/dev/null 2>&1 ; then alias diff=colordiff ; fi
+alias awsconsole='aws --output text ec2 get-console-output --instance-id'
 
-function sshhome() {
-    ssh -p 2222 $(ecmip home_gateway)
-}
-
-function ecmip() {
-    NAME=$1
-    shift
-    IP=$(ecm routers search "name:$NAME" --csv --columns 7 --no-header $@)
-    echo $IP | tr -d '\r'
-}
-
-function dpsg() {
-    docker ps -a | grep "$@" | awk '{print $1}'
-}
-
-function denv() {
-    if [ -z "$1" ] ; then
-        OPT=default
-    else
-        OPT=
-    fi
-    eval $(docker-machine env $OPT$@)
-}
-
-function dflush() {
-    RUNNING=$(docker ps -q)
-    if [ -n "$RUNNING" ] ; then
-        docker kill $RUNNING
-    fi
-    CONTAINERS=$(docker ps -aq)
-    if [ -n "$CONTAINERS" ] ; then
-        docker rm -f $CONTAINERS
-    fi
-    IMAGES=$(docker images -aq)
-    if [ -n "$IMAGES" ] ; then
-        docker rmi -f $IMAGES
-    fi
-}
-
+if which colordiff 1>/dev/null 2>&1 ; then
+    alias diff=colordiff
+fi
 
 function pytags() {
     find $(grealpath 2>/dev/null -s $@ || realpath -s $@) -follow -type f -name \*.py > .pyfiles && \
@@ -78,7 +32,6 @@ function pytags() {
 function filewatch() {
     inotifywait --exclude '\.(swx|swp)' -e modify -e delete -e create -e move -r $@ 1>/dev/null 2>&1
 }
-
 
 function git-repo-status() {
     #ORIGIN=$(basename $(git config remote.origin.url 2>/dev/null) 2>/dev/null)
@@ -143,15 +96,10 @@ fi
 export LESS="-i -X -R -F"
 export EDITOR=vim
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
-
 export GOPATH=~/project/.go
-PATH=$PATH:$GOPATH/bin
 export CSCOPE_DB=.cscope_db
-export ODYSSEY_DEFAULT_STACK=mayfield
+export SYSTEMD_COLORS=false
+
+PATH=$PATH:$GOPATH/bin
 
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
-
-# added by travis gem
-[ -f /home/mayfield/.travis/travis.sh ] && source /home/mayfield/.travis/travis.sh
-
-export SYSTEMD_COLORS=false
