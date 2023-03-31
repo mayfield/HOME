@@ -24,7 +24,7 @@ done
 ffmpeg -video_size ${WIDTH}x${HEIGHT} \
     -framerate $FRAMERATE \
     -f x11grab \
-    -i :1.0+${XOFFT},${YOFFT} \
+    -i :0.0+${XOFFT},${YOFFT} \
     -c:v libx264 \
     -pix_fmt yuv420p \
     -preset fast \

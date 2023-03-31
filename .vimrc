@@ -16,7 +16,7 @@ let g:ale_sign_warning = '⚠️'
 
 filetype on
 filetype plugin on
-filetype plugin indent off
+filetype indent off
 syntax on
 set backup
 set nocompatible
