@@ -16,7 +16,7 @@ alias lr='ls -Frt'
 alias grep='grep --color --line-buffered'
 alias psg='ps -aef | grep -v psg | grep -v grep | grep'
 alias mps='ps -eo pid,ppid,user,bsdstart,bsdtime,tty,ni,pcpu,rss,comm --sort c'
-alias awkfirst='awk "{ print \$1 }"'
+alias awkfirst='awk -F "[ :\t#]" "{print \$1}"'
 alias awsconsole='aws --output text ec2 get-console-output --instance-id'
 
 if which colordiff 1>/dev/null 2>&1 ; then
@@ -25,7 +25,7 @@ fi
 
 function pytags() {
     find $(grealpath 2>/dev/null -s $@ || realpath -s $@) -follow -type f -name \*.py > .pyfiles && \
-    pycscope -i .pyfiles -f .cscope_db
+    pycscope -i .pyfiles
     rm -f .pyfiles
 }
 
@@ -97,9 +97,10 @@ export LESS="-i -X -R -F"
 export EDITOR=vim
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
 export GOPATH=~/project/.go
-export CSCOPE_DB=.cscope_db
+#export CSCOPE_DB=.cscope_db
 export SYSTEMD_COLORS=false
 
 PATH=$PATH:$GOPATH/bin
 
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
+PATH=~/.local/bin:$PATH

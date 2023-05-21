@@ -21,7 +21,7 @@ bindsym Control+$mod+Print exec xfce4-screenshooter -c -w
 bindsym $mod+Print exec xfce4-screenshooter
 bindsym --whole-window --border Control+$mod+button4 exec ~/bin/wintrans up
 bindsym --whole-window --border Control+$mod+button5 exec ~/bin/wintrans down
-
+bindsym Control+Shift+h exec aplay ~/Documents/airhorn.wav
 
 
 # kill focused window
@@ -175,6 +175,7 @@ for_window [window_role="Floating"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
+for_window [class="mpv"] floating enable
 for_window [class="vlc"] floating enable
 for_window [class="Vlc"] floating enable
 for_window [class="feh"] floating enable
