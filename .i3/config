@@ -210,7 +210,7 @@ client.background #ff0000
 default_border pixel 4
 default_floating_border normal 4
 
-for_window [class="Gnome-terminal" floating] border normal 4
+for_window [class="Gnome-terminal"] border normal 4
 for_window [class="Google-chrome"] border normal 4
 
 #gaps inner 2

@@ -17,6 +17,7 @@ def main(csv_file:str, xy:bool=False):
 def render_xy(df):
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df.iloc[:,0], y=df.iloc[:,1], name="XY"))
+    fig.update_yaxes(scaleanchor='x', scaleratio=1)
     fig.show()
 
 
