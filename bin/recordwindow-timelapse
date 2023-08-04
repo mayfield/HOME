@@ -1,8 +1,8 @@
 #!/bin/sh -e
 
-. $(dirname $0)/.recordscreen-rc
+. .recordscreen-rc
 
-FPS=60
+FPS=60  # input rate. output rate is PTS/<fps>
 
 echo "Click on the window to record"
 WININFO=$(xwininfo)
@@ -17,4 +17,4 @@ fi
 X=$(echo "$WININFO" | grep "Absolute upper-left X:" | awk '{print $4}')
 Y=$(echo "$WININFO" | grep "Absolute upper-left Y:" | awk '{print $4}')
 
-record window $FPS $W $H $X $Y -crf 21
+record window-timelapse $FPS $W $H $X $Y -crf 21 -filter:v "setpts=PTS/30"
