@@ -13,6 +13,7 @@ let g:ale_lint_delay = 100
 let g:ale_virtualtext_cursor = 0
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
+set redrawtime=5000
 
 filetype on
 filetype plugin on
