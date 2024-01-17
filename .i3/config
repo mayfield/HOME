@@ -183,6 +183,7 @@ for_window [window_role="devtools"] floating enable
 for_window [title="MPlayer"] floating enable
 for_window [class="Sauce for Zwift™"] floating enable
 for_window [class="Gnome-screenshot"] floating enable
+for_window [class="Virt-manager"] floating enable
 
 
 #bar {
