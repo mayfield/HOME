@@ -1,0 +1,44 @@
+function record() {
+    PREFIX="$1"
+    shift
+    FPS="$1"
+    shift
+    W=$1
+    shift
+    H=$1
+    shift
+    X=$1
+    shift
+    Y=$1
+    shift
+
+    I=1
+    while [ -f "$PREFIX-$I.mp4" ] ; do
+        ((I++))
+    done
+    FILE="${PREFIX}-${I}.mp4"
+
+    ffmpeg \
+        -hide_banner \
+        -loglevel info \
+        -video_size ${W}x${H} \
+        -framerate $FPS \
+        -f x11grab \
+        -i $DISPLAY+${X},${Y} \
+        -c:v libx264 \
+        -pix_fmt yuv420p \
+        -preset fast \
+        "$@" \
+        "$FILE-active.mkv" || true
+    ffmpeg \
+        -hide_banner \
+        -loglevel error \
+        -i "$FILE-active.mkv" \
+        -movflags faststart \
+        -c copy \
+        "$FILE"
+    rm "$FILE-active.mkv"
+
+    echo
+    echo Recorded to: $FILE
+}

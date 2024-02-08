@@ -1,0 +1,25 @@
+#!/bin/sh -e
+
+. $(dirname $0)/.recordscreen-rc
+
+FPS=60
+
+echo "Select screen region to record"
+sleep 0.1
+
+SELIMG=$(mktemp recordregion-XXXXXXXX.png)
+import $SELIMG
+SELINFO=$(identify $SELIMG)
+rm $SELIMG
+W=$(echo "$SELINFO" | awk '{print $3}' | awk -Fx '{print $1}')
+H=$(echo "$SELINFO" | awk '{print $3}' | awk -Fx '{print $2}')
+if [ $((W % 2)) -ne 0 ] ; then
+    W=$((W + 1))
+fi
+if [ $((H % 2)) -ne 0 ] ; then
+    H=$((H + 1))
+fi
+X=$(echo "$SELINFO" | awk '{print $4}' | awk -F+ '{print $2}')
+Y=$(echo "$SELINFO" | awk '{print $4}' | awk -F+ '{print $3}')
+
+record region $FPS $W $H $X $Y -crf 21
