@@ -15,6 +15,8 @@ let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 set redrawtime=5000
 
+let g:sass_recommended_style = 0
+
 filetype on
 filetype plugin on
 filetype indent off
