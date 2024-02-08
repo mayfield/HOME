@@ -1,28 +1,13 @@
 #!/bin/sh -e
 
-FRAMERATE=30
+. .recordscreen-rc
+
+FPS=30
 
 INFO=$(xrandr | grep primary | awk '{print $4}')
+W=$(echo "$INFO" | awk -Fx '{print $1}')
+H=$(echo "$INFO" | awk -Fx '{print $2}' | awk -F+ '{print $1}')
+X=$(echo "$INFO" | awk -F+ '{print $2}')
+Y=$(echo "$INFO" | awk -F+ '{print $3}')
 
-WIDTH=$(echo "$INFO" | awk -Fx '{print $1}')
-HEIGHT=$(echo "$INFO" | awk -Fx '{print $2}' | awk -F+ '{print $1}')
-XOFFT=$(echo "$INFO" | awk -F+ '{print $2}')
-YOFFT=$(echo "$INFO" | awk -F+ '{print $3}')
-
-I=1
-while [ -f recordscreen-${I}.mp4 ] ; do
-    ((I++))
-done
-
-ffmpeg -video_size ${WIDTH}x${HEIGHT} \
-    -framerate $FRAMERATE \
-    -f x11grab \
-    -i :0.0+${XOFFT},${YOFFT} \
-    -c:v libx264 \
-    -pix_fmt yuv420p \
-    -preset fast \
-    -crf 22 \
-    recordscreen-${I}.mp4 || true
-
-echo
-echo Recorded to: recordscreen-${I}.mp4
+record screen $FPS $W $H $X $Y -crf 22
