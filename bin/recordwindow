@@ -17,4 +17,8 @@ fi
 X=$(echo "$WININFO" | grep "Absolute upper-left X:" | awk '{print $4}')
 Y=$(echo "$WININFO" | grep "Absolute upper-left Y:" | awk '{print $4}')
 
-record window $FPS $W $H $X $Y -crf 21
+if [ $1 == "audio" ] ; then
+    AUDIO=1
+fi
+
+record window $FPS $W $H $X $Y "$AUDIO" -crf 21

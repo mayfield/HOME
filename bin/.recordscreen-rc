@@ -11,12 +11,20 @@ function record() {
     shift
     Y=$1
     shift
+    AUDIO=$1
+    shift
 
     I=1
     while [ -f "$PREFIX-$I.mp4" ] ; do
         ((I++))
     done
     FILE="${PREFIX}-${I}.mp4"
+
+    if [ "$AUDIO" -eq 1 ] ; then
+        AUDIO_OPTION="-f pulse -i default"
+    else
+        AUDIO_OPTION=
+    fi
 
     ffmpeg \
         -hide_banner \
@@ -25,6 +33,7 @@ function record() {
         -framerate $FPS \
         -f x11grab \
         -i $DISPLAY+${X},${Y} \
+        $AUDIO_OPTION \
         -c:v libx264 \
         -pix_fmt yuv420p \
         -preset fast \

@@ -10,4 +10,8 @@ H=$(echo "$INFO" | awk -Fx '{print $2}' | awk -F+ '{print $1}')
 X=$(echo "$INFO" | awk -F+ '{print $2}')
 Y=$(echo "$INFO" | awk -F+ '{print $3}')
 
-record screen $FPS $W $H $X $Y -crf 22
+if [ $1 == "audio" ] ; then
+    AUDIO=1
+fi
+
+record screen $FPS $W $H $X $Y "$AUDIO" -crf 22

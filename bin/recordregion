@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -ex
 
 . $(dirname $0)/.recordscreen-rc
 
@@ -22,4 +22,8 @@ fi
 X=$(echo "$SELINFO" | awk '{print $4}' | awk -F+ '{print $2}')
 Y=$(echo "$SELINFO" | awk '{print $4}' | awk -F+ '{print $3}')
 
-record region $FPS $W $H $X $Y -crf 21
+if [ $1 == "audio" ] ; then
+    AUDIO=1
+fi
+
+record region $FPS $W $H $X $Y "$AUDIO" -crf 21

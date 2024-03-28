@@ -11,6 +11,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec gnome-terminal 
 bindsym $mod+Shift+Return exec gnome-terminal --role=Floating
+#bindsym $mod+Return exec wezterm
 
 bindsym Control+$mod+backslash exec ~/bin/volume up
 bindsym Control+mod1+backslash exec ~/bin/volume up
@@ -19,6 +20,7 @@ bindsym Control+mod1+Return exec ~/bin/volume down
 bindsym Control+$mod+m exec chrome
 bindsym Control+$mod+Print exec xfce4-screenshooter -c -w
 bindsym $mod+Print exec xfce4-screenshooter
+bindsym Print exec xfce4-screenshooter -f -m
 bindsym Control+Shift+h exec aplay ~/Documents/airhorn.wav
 
 
@@ -173,7 +175,7 @@ for_window [class="Google-chrome"] border normal 4
 
 exec /usr/local/bin/picom --backend xrender --log-level info
 exec xscreensaver --no-splash
-#exec xset +dpms dpms 300 600 3600
+exec (sleep 5; xset +dpms dpms 300 600 3600)
 exec keyboardsetup
 exec /usr/lib64/xfce4/notifyd/xfce4-notifyd
 # Allow copy/paste of images...
