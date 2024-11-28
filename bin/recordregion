@@ -2,7 +2,7 @@
 
 . $(dirname $0)/.recordscreen-rc
 
-FPS=60
+FPS=30
 
 echo "Select screen region to record"
 sleep 0.1

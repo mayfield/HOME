@@ -21,4 +21,4 @@ if [ $1 == "audio" ] ; then
     AUDIO=1
 fi
 
-record window-timelapse $FPS $W $H $X $Y "$AUDIO" -crf 21 -filter:v "setpts=PTS/30"
+record window-timelapse $FPS $W $H $X $Y "$AUDIO" -crf 21 -filter:v "setpts=PTS/10"

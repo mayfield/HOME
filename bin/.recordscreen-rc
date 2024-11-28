@@ -29,14 +29,15 @@ function record() {
     ffmpeg \
         -hide_banner \
         -loglevel info \
+        -f x11grab \
         -video_size ${W}x${H} \
         -framerate $FPS \
-        -f x11grab \
+        -show_region 1 \
         -i $DISPLAY+${X},${Y} \
         $AUDIO_OPTION \
         -c:v libx264 \
         -pix_fmt yuv420p \
-        -preset fast \
+        -preset ultrafast \
         "$@" \
         "$FILE-active.mkv" || true
     ffmpeg \

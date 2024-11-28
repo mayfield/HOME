@@ -152,6 +152,8 @@ for_window [class="Sauce for Zwift™"] floating enable
 for_window [class="Gnome-screenshot"] floating enable
 for_window [class="Virt-manager"] floating enable
 for_window [class="Xfce4-panel"] floating enable
+for_window [class="Devtools" class="firefox"] floating enable
+for_window [class="gimp-3.0"] floating enable
 
 # assign [class="Sauce for Zwift™"] 3
 
@@ -168,6 +170,7 @@ default_floating_border normal 4
 
 for_window [class="Gnome-terminal"] border normal 4
 for_window [class="Google-chrome"] border normal 4
+for_window [class="Gimp"] border normal 4
 
 #gaps inner 2
 #gaps outer 0
