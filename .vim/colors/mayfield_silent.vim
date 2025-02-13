@@ -7,6 +7,8 @@ if exists("syntax_on")
   syntax reset
 endif
 
+set background=light
+
 let g:colors_name = "mayfield_silent"
 
 hi CursorLine       cterm=reverse
@@ -28,7 +30,7 @@ if &background == "light"
     hi GitGutterDelete  ctermbg=254 ctermfg=160
 
     hi StatusLineNC     ctermbg=232  ctermfg=white cterm=bold
-    hi StatusLine       ctermfg=black
+    hi StatusLine       ctermfg=DarkGray ctermbg=white
     hi MatchParen       ctermbg=34
     hi AutoHiGroup      ctermbg=Yellow
 
