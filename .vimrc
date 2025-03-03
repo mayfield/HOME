@@ -6,6 +6,7 @@ call plug#end()
 
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_linters = {'c': ['ccls', 'gcc']}  " Use 'ccls' instead of 'clangd'
 "let g:ale_lint_on_text_changed = 'normal'
 "let g:ale_lint_on_insert_leave = 0
 "let g:ale_lint_on_enter = 0
