@@ -1,6 +1,6 @@
 #!/bin/sh
 exec /usr/bin/google-chrome 
-    # --enable-features=Vulkan $@
+    #--enable-features=Vulkan $@
     #--use-fake-device-for-media-stream #\
     #--use-file-for-fake-video-capture=/home/mayfield/Videos/Sync-Footage-V1-H264.y4m \
     #--use-file-for-fake-audio-capture=/home/mayfield/Videos/Sync-Footage-V1-H264.wav

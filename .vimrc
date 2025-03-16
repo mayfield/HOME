@@ -30,7 +30,7 @@ set mousehide
 set ignorecase
 set smartcase
 set incsearch
-set history=10000
+set history=4000
 set scrolloff=8
 set titlelen=200
 set fo-=cro
@@ -38,6 +38,8 @@ set tags=tags;/
 set number
 set undofile
 set undodir=~/.vim/undos
+set undolevels=4000
+set undoreload=20000
 set backupdir=~/.vim/backups
 set tabstop=4
 set shiftwidth=4
@@ -79,5 +81,6 @@ func! WordProcessor()
   setlocal nobackup
   setlocal noundofile
   setlocal nonumber
+  setlocal history=0
 endfu
 com! WP call WordProcessor()

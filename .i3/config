@@ -171,6 +171,7 @@ default_floating_border normal 4
 for_window [class="Gnome-terminal"] border normal 4
 for_window [class="Google-chrome"] border normal 4
 for_window [class="Gimp"] border normal 4
+for_window [class="LM Studio"] border normal 4
 
 #gaps inner 2
 #gaps outer 0
