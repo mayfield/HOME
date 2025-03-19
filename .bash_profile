@@ -26,7 +26,6 @@ alias ll='ls -alrt'
 alias ls='ls -F'
 alias lr='ls -Frt'
 alias grep='grep --color --line-buffered'
-alias psg='ps aux | grep -v psg | grep -v grep | grep -e '^USER' -e'
 alias awkfirst='awk -F "[ :\t#]" "{print \$1}"'
 alias awsconsole='aws --output text ec2 get-console-output --instance-id'
 
@@ -34,15 +33,59 @@ if which colordiff 1>/dev/null 2>&1 ; then
     alias diff=colordiff
 fi
 
+
+function psg() {
+    if [ $# -lt 1 ] ; then
+        echo "Usage psg SEARCH [SEARCH...]"
+        return 1
+    fi
+    queries=()
+    for x in "$@" ; do 
+        queries+=("-e" "$x")
+    done
+    # NOTE: added ^USER in the grep includes the header..
+    ps aux | \
+        grep -v psg | \
+        grep -v grep | \
+        grep -e '^USER' "${queries[@]}"
+}
+
+
+function psgkill() {
+    if [ $# -lt 1 ] ; then
+        echo "Usage: psgkill [SIG] SEARCH [SEARCH...]"
+        return 1
+    fi
+    SIG=
+    if [ "$1" -eq "$1" ] 2>/dev/null && [ "$1" -lt 0 ] ; then
+        echo found signal? $1
+        SIG=$1
+        shift
+    fi
+    queries=()
+    for x in "$@" ; do 
+        queries+=("-e" "$x")
+    done
+    ps --no-headers aux | \
+        grep -v psgkill | \
+        grep -v grep | \
+        grep "${queries[@]}" | \
+        awk '{print $2}' | \
+        xargs kill $SIG
+}
+
+
 function pytags() {
     find $(grealpath 2>/dev/null -s $@ || realpath -s $@) -follow -type f -name \*.py > .pyfiles && \
     pycscope -i .pyfiles
     rm -f .pyfiles
 }
 
+
 function filewatch() {
     inotifywait --exclude '\.(swx|swp)' -e modify -e delete -e create -e move -r $@ 1>/dev/null 2>&1
 }
+
 
 function git-repo-status() {
     #ORIGIN=$(basename $(git config remote.origin.url 2>/dev/null) 2>/dev/null)
@@ -92,10 +135,12 @@ function git-repo-status() {
     echo -e "$(basename $(dirname ${ORIGIN}))/$(basename ${ORIGIN})${BRANCH_SUFFIX}($STATUS)"
 }
 
+
 # shortcut to awk column selection based on spaces, colons and commas.
 function column() {
     awk -F'[ \t,:]+' '{ print $'$1' }'
 }
+
 
 if [ -n "$(tty)" ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
 	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n:; "
