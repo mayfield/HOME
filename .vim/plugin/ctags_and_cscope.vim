@@ -3,26 +3,29 @@
 " Allow use of both Ctags and Cscope for CTRL-], etc...
 "
 set cscopetag
+" Allow relative path lookups to work properly when we are above the DB
+set cscoperelative
 
 " Search Ctags before resorting to Cscope
 set csto=1
 
 function CScopeSetup()
     " add any cscope databases we find; Starting in cwd and going up.
-    if "$CSCOPE_DB" != ""
+    if $CSCOPE_DB != ""
         let csdb_filename = $CSCOPE_DB
     else
         let csdb_filename = 'cscope.out'
     endif
+    " kill the automatic csto first.. then we'll search up the folder tree
     :silent cs kill -1
 
-    "for csdb in findfile(csdb_filename, getcwd().';'.expand("$HOME"), -1)
-    "    exe ":silent cs add ".csdb
-    "endfor
-    
-    for csdb in findfile(csdb_filename, expand('%:p:h').';'.expand("$HOME"), -1)
+    for csdb in findfile(csdb_filename, getcwd().';'.expand("$HOME"), -1)
         exe ":silent cs add ".csdb
     endfor
+
+   "for csdb in findfile(csdb_filename, expand('%:p:h').';'.expand("$HOME"), -1)
+   "    exe ":silent cs add ".csdb
+   "endfor
 endfunction
 
 autocmd BufEnter * call CScopeSetup()

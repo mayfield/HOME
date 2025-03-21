@@ -38,8 +38,8 @@ set tags=tags;/
 set number
 set undofile
 set undodir=~/.vim/undos
-set undolevels=4000
-set undoreload=20000
+set undolevels=10000
+set undoreload=40000
 set backupdir=~/.vim/backups
 set tabstop=4
 set shiftwidth=4
