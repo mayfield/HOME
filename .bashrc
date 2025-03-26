@@ -11,3 +11,6 @@ export GOPATH=~/project/.go
 export PATH="$PATH:/usr/local/bin:/sbin:/usr/sbin:$HOME/.local/bin:$HOME/bin:$GOPATH/bin"
 
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mayfield/.lmstudio/bin"

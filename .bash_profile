@@ -12,10 +12,11 @@ export HISTCONTROL=ignoredups:erasedups:ignorespace
 export LESS="-i -X -R -F"
 export EDITOR=vim
 export SYSTEMD_COLORS=false
+export HOSTNAME_SHORT=$(hostname -s)
 
 shopt -s histappend  # append to history file instead of replace
 # Write history file on each command
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a"
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a;"'set_term_title "$USERNAME@$HOSTNAME_SHORT:$PWD"'
 
 stty intr ^C
 stty erase ^?
@@ -32,7 +33,6 @@ alias awsconsole='aws --output text ec2 get-console-output --instance-id'
 if which colordiff 1>/dev/null 2>&1 ; then
     alias diff=colordiff
 fi
-
 
 function psg() {
     if [ $# -lt 1 ] ; then
@@ -72,6 +72,11 @@ function psgkill() {
         grep "${queries[@]}" | \
         awk '{print $2}' | \
         xargs kill $SIG
+}
+
+
+function set_term_title() {
+    echo -ne "\033]0;$@\007"
 }
 
 
@@ -154,3 +159,6 @@ if [ -f /usr/local/etc/bash_completion ] ; then
 fi
 
 [ -r ~/.bash_profile_local ] && . ~/.bash_profile_local
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mayfield/.lmstudio/bin"
