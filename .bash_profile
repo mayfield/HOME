@@ -9,7 +9,7 @@ export USERNAME="${LOGNAME}"
 export HISTSIZE=10000000
 export HISTFILESIZE=100000000
 export HISTCONTROL=ignoredups:erasedups:ignorespace
-export LESS="-i -X -R -F"
+export LESS="-i -X -R -F -j10"
 export EDITOR=vim
 export SYSTEMD_COLORS=false
 export HOSTNAME_SHORT=$(hostname -s)
@@ -112,7 +112,7 @@ function git-repo-status() {
     STATUS=$(git status -b -uno --porcelain 2>/dev/null | head -n1)
     AHEAD=$(echo $STATUS | grep '\[ahead ' |
             sed -e 's/.* \[ahead \([0-9][0-9]*\)\].*/\1/')
-    BRANCH=$(echo $STATUS | sed -e 's/## \([^\.][^\.]*\).*/\1/')
+    BRANCH=$(echo $STATUS | awk -F '## ' '{print $2}' | awk -F '\\.\\.\\.' '{print $1}')
     if [ "$BRANCH" != "master" ] && [ "$BRANCH" != "main" ] && [ "$BRANCH" != "HEAD (no branch)" ]; then
         BRANCH_SUFFIX="${BOLD}#${BRANCH}${NORM}"
     elif [ "$BRANCH" == "HEAD (no branch)" ]; then
