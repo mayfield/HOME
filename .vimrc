@@ -33,7 +33,6 @@ set incsearch
 set history=4000
 set scrolloff=8
 set titlelen=200
-set fo-=cro
 set tags=tags;/
 set number
 set undofile
@@ -66,6 +65,9 @@ set updatetime=200
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
 
 autocmd BufEnter * :syntax sync fromstart
+
+" Disable auto comment insertion when using 'o' to add a line
+autocmd BufEnter * setlocal fo-=o
 
 
 func! WordProcessor()
