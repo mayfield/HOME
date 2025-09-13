@@ -17,7 +17,7 @@ fi
 X=$(echo "$WININFO" | grep "Absolute upper-left X:" | awk '{print $4}')
 Y=$(echo "$WININFO" | grep "Absolute upper-left Y:" | awk '{print $4}')
 
-if [ $1 == "audio" ] ; then
+if [ "$1" == "audio" ] ; then
     AUDIO=1
 fi
 

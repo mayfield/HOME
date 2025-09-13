@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-. .recordscreen-rc
+. $(dirname $0)/.recordscreen-rc
 
 FPS=60  # input rate. output rate is PTS/<fps>
 
@@ -17,8 +17,4 @@ fi
 X=$(echo "$WININFO" | grep "Absolute upper-left X:" | awk '{print $4}')
 Y=$(echo "$WININFO" | grep "Absolute upper-left Y:" | awk '{print $4}')
 
-if [ $1 == "audio" ] ; then
-    AUDIO=1
-fi
-
-record window-timelapse $FPS $W $H $X $Y "$AUDIO" -crf 21 -filter:v "setpts=PTS/10"
+record window-timelapse $FPS $W $H $X $Y 0 -crf 21 -filter:v "setpts=PTS/10"

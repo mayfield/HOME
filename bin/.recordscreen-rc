@@ -20,7 +20,7 @@ function record() {
     done
     FILE="${PREFIX}-${I}.mp4"
 
-    if [ "$AUDIO" -eq 1 ] ; then
+    if [ "$AUDIO" == "1" ] ; then
         AUDIO_OPTION="-f pulse -i default"
     else
         AUDIO_OPTION=
