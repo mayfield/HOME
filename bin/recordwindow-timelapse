@@ -2,7 +2,7 @@
 
 . $(dirname $0)/.recordscreen-rc
 
-FPS=60  # input rate. output rate is PTS/<fps>
+FPS=30  # input rate. output rate is PTS/<fps>
 
 echo "Click on the window to record"
 WININFO=$(xwininfo)

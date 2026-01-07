@@ -38,6 +38,7 @@ function record() {
         -c:v libx264 \
         -pix_fmt yuv420p \
         -preset ultrafast \
+        -crf 28 \
         "$@" \
         "$FILE-active.mkv" || true
     ffmpeg \

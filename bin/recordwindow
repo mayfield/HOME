@@ -2,8 +2,6 @@
 
 . $(dirname $0)/.recordscreen-rc
 
-FPS=72
-
 echo "Click on the window to record"
 WININFO=$(xwininfo)
 W=$(echo "$WININFO" | grep Width: | awk '{print $2}')
@@ -21,4 +19,4 @@ if [ "$1" == "audio" ] ; then
     AUDIO=1
 fi
 
-record window $FPS $W $H $X $Y "$AUDIO" -crf 21
+record window ${FPS:-30} $W $H $X $Y "$AUDIO" -crf 21
