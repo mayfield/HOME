@@ -1,0 +1,1 @@
+exec nvidia-smi --query-gpu=memory.used,memory.free --format=csv,noheader,nounits | sed -e 's/,//g'

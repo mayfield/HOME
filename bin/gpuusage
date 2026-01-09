@@ -1,0 +1,14 @@
+#!/bin/bash
+
+MIN_CLK=210
+MAX_CLK=1650 # technically it can boost to 2100 but it's rare to exceed 1650 because of power limits
+CSV=$(nvidia-smi \
+    --format=csv,noheader,nounits \
+    --query-gpu=utilization.gpu,clocks.current.graphics)
+IFS=", " read GPU_PCT GR_CLK <<< $CSV
+
+CLK_PCT=$((((GR_CLK - MIN_CLK) * 100) / (MAX_CLK - MIN_CLK)))
+if [ $CLK_PCT -gt 10 ] ; then
+    CLK_PCT=100
+fi
+printf '%.1f﹪' "$(echo "scale=1;$CLK_PCT * $GPU_PCT / 100" | bc)"
