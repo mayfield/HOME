@@ -2,19 +2,20 @@
 
 . "${HOME}/.bashrc"
 
+shopt -s histappend  # append to history file instead of replace
+
 export BASH_ENV="${HOME}"/.bashrc
 export ENV="${BASH_ENV}"
 export ENV_FILE="${BASH_ENV}"
 export USERNAME="${LOGNAME}"
-export HISTSIZE=10000000
-export HISTFILESIZE=100000000
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 export HISTCONTROL=ignoredups:erasedups:ignorespace
 export LESS="-i -X -R -F -j10"
 export EDITOR=vim
 export SYSTEMD_COLORS=false
 export HOSTNAME_SHORT=$(hostname -s)
 
-shopt -s histappend  # append to history file instead of replace
 # Write history file on each command
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a;"'set_term_title "$USERNAME@$HOSTNAME_SHORT:$PWD"'
 
