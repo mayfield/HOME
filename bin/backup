@@ -1,4 +1,16 @@
 #!/bin/sh
-exec rsync -av --delete \
+exec /home/mayfield/project/rsync/rsync \
+    --rsync-path=/var/services/homes/mayfield1000/rsync \
     --exclude-from /home/mayfield/.rsync-excludes \
-    /home/mayfield/ /media/general/archive/mayfield/backup/
+    --archive \
+    -M--fake-super \
+    --one-file-system \
+    --compress \
+    --sparse \
+    --inplace \
+    --preallocate \
+    --delete \
+    -v \
+    /home/mayfield/ mayfield1000@nas.local:/volume1/general/archive/mayfield/backup/
+    #--progress \
+    #--dry-run \
