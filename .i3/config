@@ -10,7 +10,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec gnome-terminal 
-bindsym $mod+Shift+Return exec gnome-terminal --role=Floating
+bindsym $mod+Shift+Return exec gnome-terminal --role=Floating --geometry=80x24
 #bindsym $mod+Return exec wezterm
 
 bindsym Control+$mod+backslash exec ~/bin/volume up
@@ -44,10 +44,10 @@ bindsym $mod+r exec dmenu_run
 #bindsym Control+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-#bindsym $mod+Left focus left
-#bindsym $mod+Down focus down
-#bindsym $mod+Up focus up
-#bindsym $mod+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -159,6 +159,7 @@ for_window [class="Vlc"] floating enable
 for_window [class="feh"] floating enable
 for_window [window_role="devtools"] floating enable
 for_window [title="MPlayer"] floating enable
+for_window [class="sauce-for-zwifttm"] floating enable
 for_window [class="Sauce for Zwift™"] floating enable
 for_window [class="Gnome-screenshot"] floating enable
 for_window [class="Virt-manager"] floating enable
@@ -191,7 +192,8 @@ for_window [class="LM Studio"] border normal 4
 #gaps outer 0
 #smart_gaps on
 
-exec /usr/local/bin/picom --backend xrender --log-level info
+# stable..
+exec picom --backend xrender --log-level info
 exec xscreensaver --no-splash
 exec (sleep 5; xset +dpms dpms 300 600 3600)
 exec keyboardsetup

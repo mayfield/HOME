@@ -1,5 +1,5 @@
 #!/bin/sh
-exec /home/mayfield/project/rsync/rsync \
+exec time /home/mayfield/project/rsync/rsync \
     --rsync-path=/var/services/homes/mayfield1000/rsync \
     --exclude-from /home/mayfield/.rsync-excludes \
     --archive \
@@ -9,8 +9,8 @@ exec /home/mayfield/project/rsync/rsync \
     --sparse \
     --inplace \
     --preallocate \
-    --delete \
-    -v \
+    --progress \
     /home/mayfield/ mayfield1000@nas.local:/volume1/general/archive/mayfield/backup/
-    #--progress \
+    # -v \
     #--dry-run \
+    #--delete \
