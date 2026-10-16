@@ -35,6 +35,12 @@ if which colordiff 1>/dev/null 2>&1 ; then
     alias diff=colordiff
 fi
 
+function grepll() {
+    SEARCH=$1
+    shift
+    grep -oE ".{0,20}${SEARCH}.{0,20}" "$@" | grep ${SEARCH}
+}
+
 function psg() {
     if [ $# -lt 1 ] ; then
         echo "Usage psg SEARCH [SEARCH...]"
@@ -160,6 +166,3 @@ if [ -f /usr/local/etc/bash_completion ] ; then
 fi
 
 [ -r ~/.bash_profile_local ] && . ~/.bash_profile_local
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/mayfield/.lmstudio/bin"
