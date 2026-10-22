@@ -5,6 +5,7 @@ if [ -f /etc/bashrc ] && [ -r /etc/bashrc ] ; then
 fi
 
 export TMP=$HOME/tmp
+export TMPDIR=$TMP
 export LANG=en_US.UTF-8
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
 export GOPATH=~/project/.go

@@ -11,13 +11,13 @@ export USERNAME="${LOGNAME}"
 export HISTSIZE=-1
 export HISTFILESIZE=-1
 export HISTCONTROL=ignoredups:erasedups:ignorespace
+export HISTTIMEFORMAT="%F %T "
+
 export LESS="-i -X -R -F -j10"
 export EDITOR=vim
 export SYSTEMD_COLORS=false
 export HOSTNAME_SHORT=$(hostname -s)
-
-# Write history file on each command
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a;"'set_term_title "$USERNAME@$HOSTNAME_SHORT:$PWD"'
+export CURRENT_TITLE='...'
 
 stty intr ^C
 stty erase ^?
@@ -35,11 +35,53 @@ if which colordiff 1>/dev/null 2>&1 ; then
     alias diff=colordiff
 fi
 
+
+function _inject_title_addendum() {
+    local abort_signal
+    abort_signal=$(mktemp -d "${TMPDIR:-/tmp}/bash-term-title.XXXXXX")
+    if [ -z "$abort_signal" ] ; then
+        return
+    fi
+
+    # Must be run in background to get correct ps info.  Use tmp file/dir for lock/signal sync with parent
+    (
+        # uncomment if this doesn't work on slow/loaded machines.
+        # sleep 0.01
+        local tpgid proc
+        tpgid=$(ps -o tpgid= -p $$ 2>/dev/null | tr -d ' ')
+        proc=$(ps -o args= -p "$tpgid" 2>/dev/null)
+        if [ ! -d "$abort_signal" ] ; then
+            return
+        fi
+        if [ -n "$proc" ] ; then
+            set_term_title "$CURRENT_TITLE :: $proc [$tpgid]"
+        fi
+        rmdir "$abort_signal" 2>/dev/null
+    ) </dev/null >/dev/null 2>/dev/null &
+
+    echo "$abort_signal"
+}
+
+
+function _reset_title() {
+    # Prevent stale title update from background process..
+    local abort_signal="$_ps0_abort_signal"
+    unset _ps0_abort_signal
+    if [ -d "$abort_signal" ] ; then
+        rmdir "$abort_signal" 2>/dev/null
+    fi
+    # set this publicly so vim/etc can use it
+    CURRENT_TITLE="$USERNAME@$HOSTNAME_SHORT:$PWD"
+    set_term_title "$CURRENT_TITLE"
+}
+
+
 function grepll() {
     SEARCH=$1
     shift
     grep -oE ".{0,20}${SEARCH}.{0,20}" "$@" | grep ${SEARCH}
 }
+
 
 function psg() {
     if [ $# -lt 1 ] ; then
@@ -83,7 +125,7 @@ function psgkill() {
 
 
 function set_term_title() {
-    echo -ne "\033]0;$@\007"
+    printf '\033]0;%s\007' "$*" > /dev/tty
 }
 
 
@@ -153,13 +195,15 @@ function column() {
     awk -F'[ \t,:]+' '{ print $'$1' }'
 }
 
-
 if [ -n "$(tty)" ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
+	PS0='${ _ps0_abort_signal=$(_inject_title_addendum); history -a; }'
 	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n:; "
 	PS2=": [.2] ; "
 	PS3=": [.3] ; "
 	PS4=": [.4] ; "
 fi
+
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}_reset_title"
 
 if [ -f /usr/local/etc/bash_completion ] ; then
     . /usr/local/etc/bash_completion

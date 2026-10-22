@@ -32,6 +32,8 @@ set smartcase
 set incsearch
 set history=4000
 set scrolloff=8
+set title
+let &titlestring = $CURRENT_TITLE . ' :: Vim %t %m'
 set titlelen=200
 set tags=tags;/
 set number
