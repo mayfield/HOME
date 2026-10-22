@@ -195,7 +195,7 @@ function column() {
     awk -F'[ \t,:]+' '{ print $'$1' }'
 }
 
-if [ -n "$(tty)" ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
+if [ -n "$(tty)" ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ] ; then
     if (( BASH_VERSINFO[0] > 5 ||
       (BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] >= 3) )); then
 	    PS0='${ _ps0_abort_signal=$(_inject_title_addendum); history -a; }'
@@ -206,7 +206,9 @@ if [ -n "$(tty)" ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
 	PS4=": [.4] ; "
 fi
 
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}_reset_title"
+if [[ "${PROMPT_COMMAND[*]}" != *"_reset_title"* ]] ; then
+    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}_reset_title"
+fi
 
 if [ -f /usr/local/etc/bash_completion ] ; then
     . /usr/local/etc/bash_completion
