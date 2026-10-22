@@ -8,7 +8,7 @@ export BASH_ENV="${HOME}"/.bashrc
 export ENV="${BASH_ENV}"
 export ENV_FILE="${BASH_ENV}"
 export USERNAME="${LOGNAME}"
-export HISTSIZE=-1
+export HISTSIZE=1000000000
 export HISTFILESIZE=-1
 export HISTCONTROL=ignoredups:erasedups:ignorespace
 export HISTTIMEFORMAT="%F %T "
@@ -196,7 +196,10 @@ function column() {
 }
 
 if [ -n "$(tty)" ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
-	PS0='${ _ps0_abort_signal=$(_inject_title_addendum); history -a; }'
+    if (( BASH_VERSINFO[0] > 5 ||
+      (BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] >= 3) )); then
+	    PS0='${ _ps0_abort_signal=$(_inject_title_addendum); history -a; }'
+    fi
 	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n:; "
 	PS2=": [.2] ; "
 	PS3=": [.3] ; "
