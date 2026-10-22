@@ -43,19 +43,23 @@ function _inject_title_addendum() {
         return
     fi
 
-    # Must be run in background to get correct ps info.  Use tmp file/dir for lock/signal sync with parent
+    # Must be run in background to get correct ps info.
+    # Uses tmp file/dir for lock/signal sync with parent
     (
-        # uncomment if this doesn't work on slow/loaded machines.
-        # sleep 0.01
-        local tpgid proc
-        tpgid=$(ps -o tpgid= -p $$ 2>/dev/null | tr -d ' ')
-        proc=$(ps -o args= -p "$tpgid" 2>/dev/null)
-        if [ ! -d "$abort_signal" ] ; then
-            return
-        fi
-        if [ -n "$proc" ] ; then
-            set_term_title "$CURRENT_TITLE :: $proc [$tpgid]"
-        fi
+        local retries
+        retries=0
+        while [ $((retries++)) -lt 5 ] ; do
+            local tpgid proc
+            tpgid=$(ps -o tpgid= -p $$ 2>/dev/null | tr -d ' ')
+            proc=$(ps -o args= -p "$tpgid" 2>/dev/null)
+            if [ ! -d "$abort_signal" ] ; then
+                break
+            elif [ "$$" != "$tpgid" ] && [ -n "$proc" ] ; then
+                set_term_title "$CURRENT_TITLE :: $proc [$tpgid]"
+                break
+            fi
+            sleep 0.010
+        done
         rmdir "$abort_signal" 2>/dev/null
     ) </dev/null >/dev/null 2>/dev/null &
 
@@ -198,7 +202,7 @@ function column() {
 if [ -n "$(tty)" ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ] ; then
     if (( BASH_VERSINFO[0] > 5 ||
       (BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] >= 3) )); then
-	    PS0='${ _ps0_abort_signal=$(_inject_title_addendum); history -a; }'
+	    PS0='${ history -a; _ps0_abort_signal=$(_inject_title_addendum); }'
     fi
 	PS1=": $(tput smso)$LOGNAME$(tput rmso)@$(hostname -s) [\$(git-repo-status)] \${PWD#'$HOME'/} ;\n:; "
 	PS2=": [.2] ; "
