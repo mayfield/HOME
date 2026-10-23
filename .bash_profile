@@ -37,7 +37,7 @@ fi
 
 
 function _inject_title_addendum() {
-    local abort_signal
+    local abort_signal pid cmd last_pid iterations backoff
     abort_signal=$(mktemp -d "${TMPDIR:-/tmp}/bash-term-title.XXXXXX")
     if [ -z "$abort_signal" ] ; then
         return
@@ -46,19 +46,29 @@ function _inject_title_addendum() {
     # Must be run in background to get correct ps info.
     # Uses tmp file/dir for lock/signal sync with parent
     (
-        local retries
-        retries=0
-        while [ $((retries++)) -lt 5 ] ; do
-            local tpgid proc
-            tpgid=$(ps -o tpgid= -p $$ 2>/dev/null | tr -d ' ')
-            proc=$(ps -o args= -p "$tpgid" 2>/dev/null)
+        iterations=0
+        while [ $((iterations++)) -lt 100 ] ; do
             if [ ! -d "$abort_signal" ] ; then
-                break
-            elif [ "$$" != "$tpgid" ] && [ -n "$proc" ] ; then
-                set_term_title "$CURRENT_TITLE :: $proc [$tpgid]"
-                break
+                return
             fi
-            sleep 0.010
+            pid=$(ps -o tpgid= -p $$ 2>/dev/null | tr -d ' ')
+            if [ "$pid" == "$$" ] ; then
+                # we're too early
+                sleep 0.010
+                continue
+            elif [ "$pid" != "$last_pid" ] ; then
+                cmd=$(ps -o args= -p "$pid" 2>/dev/null)
+                if [ -n "$cmd" ] ; then
+                    if [ ! -d "$abort_signal" ] ; then
+                        return
+                    fi
+                    set_term_title "$CURRENT_TITLE :: $cmd [$pid]"
+                    last_pid="$pid"
+                    iterations=0
+                fi
+            fi
+            backoff="$((50 * $iterations / 1000))"
+            sleep "$backoff.200"
         done
         rmdir "$abort_signal" 2>/dev/null
     ) </dev/null >/dev/null 2>/dev/null &
