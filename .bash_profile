@@ -58,7 +58,8 @@ function _inject_title_addendum() {
                 continue
             elif [ "$pid" != "$last_pid" ] ; then
                 cmd=$(ps -o args= -p "$pid" 2>/dev/null)
-                if [ -n "$cmd" ] ; then
+                # "-bash" means the child process is still fork/exec-ing
+                if [ -n "$cmd" ] && [ "$cmd" != "-bash" ] ; then
                     if [ ! -d "$abort_signal" ] ; then
                         return
                     fi
